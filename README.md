@@ -58,3 +58,13 @@ When the **App** object is selected, you can see the settings of the client in t
 
 ### 4.3 Encoder/Decoder Project
 ... Introduction still at work...
+
+## 5. License
+This project is licensed under the GPL 3.0 License - see the LICENSE file for details.
+
+Referenced projects:
+
+1. **UniTask** MIT https://github.com/Cysharp/UniTask
+2. **LitJSON** unlicensed https://github.com/LitJSON/litjson
+3. **steamvr_unity_plugin** BSD-3-Clause license https://github.com/ValveSoftware/steamvr_unity_plugin
+4. **AvatarVR SDK** NeuroDigital Technologies https://www.neurodigital.es
