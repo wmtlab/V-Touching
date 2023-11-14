@@ -1,0 +1,233 @@
+fileFormatVersion: 2
+guid: c1eb59a224219b84c9f2ff014427abdb
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Button_00_00
+    100002: Button_00_01
+    100004: Button_00_02
+    100006: Button_00_03
+    100008: Button_00_04
+    100010: Button_00_05
+    100012: Button_00_06
+    100014: Button_00_07
+    100016: Button_00_08
+    100018: Button_00_09
+    100020: Button_00_Enter
+    100022: Button_01_00
+    100024: Button_01_01
+    100026: Button_01_02
+    100028: Button_01_03
+    100030: Button_01_04
+    100032: Button_01_05
+    100034: Button_01_06
+    100036: Button_01_07
+    100038: Button_01_08
+    100040: Button_01_09
+    100042: Button_01_Enter
+    100044: Numpad
+    100046: //RootNode
+    400000: Button_00_00
+    400002: Button_00_01
+    400004: Button_00_02
+    400006: Button_00_03
+    400008: Button_00_04
+    400010: Button_00_05
+    400012: Button_00_06
+    400014: Button_00_07
+    400016: Button_00_08
+    400018: Button_00_09
+    400020: Button_00_Enter
+    400022: Button_01_00
+    400024: Button_01_01
+    400026: Button_01_02
+    400028: Button_01_03
+    400030: Button_01_04
+    400032: Button_01_05
+    400034: Button_01_06
+    400036: Button_01_07
+    400038: Button_01_08
+    400040: Button_01_09
+    400042: Button_01_Enter
+    400044: //RootNode
+    400046: Numpad
+    2100000: Screen_00
+    2100002: Screen_01
+    2100004: Screen_02
+    2100006: Button_02
+    2100008: Button_00
+    2300000: Button_00_00
+    2300002: Button_00_01
+    2300004: Button_00_02
+    2300006: Button_00_03
+    2300008: Button_00_04
+    2300010: Button_00_05
+    2300012: Button_00_06
+    2300014: Button_00_07
+    2300016: Button_00_08
+    2300018: Button_00_09
+    2300020: Button_00_Enter
+    2300022: Button_01_00
+    2300024: Button_01_01
+    2300026: Button_01_02
+    2300028: Button_01_03
+    2300030: Button_01_04
+    2300032: Button_01_05
+    2300034: Button_01_06
+    2300036: Button_01_07
+    2300038: Button_01_08
+    2300040: Button_01_09
+    2300042: Button_01_Enter
+    2300044: Numpad
+    3300000: Button_00_00
+    3300002: Button_00_01
+    3300004: Button_00_02
+    3300006: Button_00_03
+    3300008: Button_00_04
+    3300010: Button_00_05
+    3300012: Button_00_06
+    3300014: Button_00_07
+    3300016: Button_00_08
+    3300018: Button_00_09
+    3300020: Button_00_Enter
+    3300022: Button_01_00
+    3300024: Button_01_01
+    3300026: Button_01_02
+    3300028: Button_01_03
+    3300030: Button_01_04
+    3300032: Button_01_05
+    3300034: Button_01_06
+    3300036: Button_01_07
+    3300038: Button_01_08
+    3300040: Button_01_09
+    3300042: Button_01_Enter
+    3300044: Numpad
+    4300000: Numpad
+    4300002: Button_00_Enter
+    4300004: Button_01_Enter
+    4300006: Button_01_00
+    4300008: Button_00_00
+    4300010: Button_00_09
+    4300012: Button_01_09
+    4300014: Button_01_08
+    4300016: Button_00_08
+    4300018: Button_00_07
+    4300020: Button_01_07
+    4300022: Button_01_04
+    4300024: Button_00_04
+    4300026: Button_00_05
+    4300028: Button_01_05
+    4300030: Button_01_06
+    4300032: Button_00_06
+    4300034: Button_00_03
+    4300036: Button_01_03
+    4300038: Button_01_02
+    4300040: Button_00_02
+    4300042: Button_00_01
+    4300044: Button_01_01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button_00
+    second: {fileID: 2100000, guid: c66c130252606fe4997f987a33213dde, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Button_02
+    second: {fileID: 2100000, guid: 29832100fd85f034ca4ff8487140e39e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen_00
+    second: {fileID: 2100000, guid: 52cd4f86e72ca9a459345add95a26597, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen_01
+    second: {fileID: 2100000, guid: cc073cc25afae184ba0ad123bb8494cf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen_02
+    second: {fileID: 2100000, guid: 0cf6311a288fe7341bd9638f0b061598, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 2
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

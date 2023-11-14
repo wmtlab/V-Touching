@@ -1,0 +1,23 @@
+function [binart_codes, key_frames] = encode(Input_WAV_Array, fs)
+
+TotalBits = 32;
+signal = rescale(Input_WAV_Array, -1, 1);
+n  = 8;     % Order
+fc = 72.5;  % Cutoff Frequency
+[z,p,k] = butter(n,2*fc/fs);
+[b,a] = zp2tf(z,p,k);
+signal_lowpass = filtfilt(b,a,signal);
+[key_frames,extrmum_Value,extrmum_Index] = Keyframe_extraction(signal_lowpass, fs);
+extrmum_Index_temp1 = [1 extrmum_Index' length(signal)]';
+extrmum_Value_temp2 = [signal_lowpass(1) extrmum_Value signal_lowpass(length(signal))];
+% signal_low = 1:1:length(signal);
+% signal_low = interp1(extrmum_Index',extrmum_Value',signal_low','linear');
+% signal_cancha = signal_lowpass - signal_low;
+% signal_highpass = signal - signal_lowpass;
+% signal_high = signal_highpass + signal_cancha;
+% [binart_codes] = Wavelet_processing_unity(signal_high,TotalBits,fs);
+% 
+binart_codes = Input_WAV_Array;
+key_frames = fs;
+
+end

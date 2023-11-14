@@ -1,0 +1,1409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>UnityDLL</name>
+    </assembly>
+    <members>
+        <member name="T:UnityDLL.Contacts.ContactsSystem">
+            <summary>
+            ContactsSystem is the class that controls glove contacts
+            </summary>
+        </member>
+        <member name="P:UnityDLL.Contacts.ContactsSystem.Instance">
+            <summary>
+            Instance access
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact)">
+            <summary>
+            Checks if any glove has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Location)">
+            <summary>
+            Checks if any glove with the given location has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="location">Right or left hand.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,System.Int32)">
+            <summary>
+            Checks if any glove for the given user has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,System.Int32[])">
+            <summary>
+            Checks if any glove for the given users has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Location,System.Int32)">
+            <summary>
+            Checks if any glove with the given location and user has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Checks if any glove with the given location and users has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoinedAll(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact)">
+            <summary>
+            Checks if all gloves has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoinedAll(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Location)">
+            <summary>
+            Checks if all the gloves with the given location has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="location">Right or left hand.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoinedAll(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,System.Int32)">
+            <summary>
+            Checks if all gloves for the given user has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoinedAll(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,System.Int32[])">
+            <summary>
+            Checks if all gloves for the given users has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Contacts.ContactsSystem.AreContactsJoinedAll(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Checks if all gloves with the given location and users has the specified contacts joined.
+            </summary>
+            <returns><c>true</c>, if the contacts are joined, <c>false</c> otherwise.</returns>
+            <param name="contact1">Contact1.</param>
+            <param name="contact2">Contact2.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="T:UnityDLL.Core.NDService">
+            <summary>
+            Main class of ND devices. This class controls the connection and interaction of devices with the system.
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Core.NDService.resetKey">
+            <summary>
+            Keyboard key to calibrate model's bones to its original rotation
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Core.NDService.resetFlexKey">
+            <summary>
+            Keyboard key to reset flex sensors. It is only for Gloveone devices.
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Core.NDService._instance">
+            <summary>
+            Static instance
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Core.NDService.smoothness">
+            <summary>
+            Smoothness factor for fingers.
+            0 raw data, 1 softened data
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Core.NDService.userList">
+            <summary>
+            The user list.
+            </summary>
+        </member>
+        <member name="P:UnityDLL.Core.NDService.Instance">
+            <summary>
+            Instance access
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Core.NDService.OnApplicationQuit">
+            <summary>
+            When the application is closed, clear the instance
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Core.NDService.CreateDevice(System.Int32,System.Int32)">
+            <summary>
+            Given a DeviceID and the UserID, creates a NDDevice
+            </summary>
+            <param name="deviceId">Device ID</param>
+            <param name="currentUser">UserID that is going to be assigned the new NDDevice</param>
+            <returns></returns>
+        </member>
+        <member name="M:UnityDLL.Core.NDService.SetSmoothness(System.Single)">
+            <summary>
+            Establishes the motion smoothness. Values near 0 are similiar to raw data; near 1, Slerp is applied
+            </summary>
+            <param name="value">Factor from 0 to 1 of smoothness</param>
+        </member>
+        <member name="M:UnityDLL.Core.NDService.AllAssigned">
+            <summary>
+            Update userList for each listener
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Haptic.UserData.device">
+            <summary>
+            The device associated.
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Haptic.UserData.user">
+            <summary>
+            User ID.
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Haptic.UserData.isLeftHandLocked">
+            <summary>
+            Determines if the left hand is locked for this user.
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Haptic.UserData.isRightHandLocked">
+            <summary>
+            Determines if the right hand is locked for this user.
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Haptic.UserData.#ctor(NDDevice,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="device">NDDevice associated</param>
+            <param name="user">UserID</param>
+        </member>
+        <member name="T:UnityDLL.Haptic.HapticSystem">
+            <summary>
+            Class that controls glove haptics
+            </summary>
+        </member>
+        <member name="P:UnityDLL.Haptic.HapticSystem.Instance">
+            <summary>
+            Instance access
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32)">
+            <summary>
+            Plays a pulse for all actuators, users and gloves.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location)">
+            <summary>
+            Plays a pulse for all the actuators and users with a specified location.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,System.Int32)">
+            <summary>
+            Plays a pulse for all gloves and actuators with a specified user.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,System.Int32[])">
+            <summary>
+            Plays a pulse for all gloves and actuators with a specified list of users.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Plays a pulse for all the users and gloves with a specified actuator.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Plays a pulse for all the users and gloves with a specified list of actuators.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,System.Int32)">
+            <summary>
+            Plays a pulse for all the actuators with a specified location and user.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Plays a pulse for all the actuators with a specified location and a list of users.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Plays a pulse for all users with a specified location and actuator.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Plays a pulse for all the users with a specified location and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Plays a pulse for all the gloves with a specified user and actuator.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="user">User.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,System.Int32[],NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Plays a pulse for all the gloves with a specified list of users and an actuator.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="users">Users.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Plays a pulse for all the gloves with a specified user and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="user">User.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,System.Int32[],NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Plays a pulse for all the gloves with a specified list of users and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="users">Users.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Plays a pulse with a specified location, user and actuator.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,System.Int32[],NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Plays a pulse for a glove with the given location with a specified list of users and an actuator.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Plays a pulse for a glove with the given location with a specified user and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayPulse(System.Single,System.Int32,NDAPIWrapperSpace.Location,System.Int32[],NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Plays a pulse for a glove with the given location with a specified list of users and actuators.
+            </summary>
+            <returns><c>true</c>, if pulse was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="duration">Duration.</param>
+            <param name="location">Right or left.</param>
+            <param name="users">Users.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single)">
+            <summary>
+            Sets a value for all actuators, users and gloves.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location)">
+            <summary>
+            Sets a value for all the actuators and users with a specified location.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,System.Int32)">
+            <summary>
+            Sets a value for all gloves and actuators with a specified user.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,System.Int32[])">
+            <summary>
+            Sets a value for all gloves and actuators with a specified list of users.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Sets a value for all the users and gloves with a specified actuator.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Sets a value for all the users and gloves with a specified list of actuators.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,System.Int32)">
+            <summary>
+            Sets a value for all the actuators with a specified location and user.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Sets a value for all the actuators with a specified location and a list of users.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Sets a value for all users with a specified location and actuator.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Sets a value for all the users with a specified location and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Sets a value for all the gloves with a specified user and actuator.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="user">User.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,System.Int32[],NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Sets a value for all the gloves with a specified list of users and an actuator.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="users">Users.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Sets a value for all the gloves with a specified user and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="user">User.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,System.Int32[],NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Sets a value for all the gloves with a specified list of users and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="users">Users.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Sets a value with a specified location, user and actuator.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,System.Int32[],NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Sets a value for a glove with the given location with a specified list of users and an actuator.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Sets a value for a glove with the given location with a specified user and a list of actuators.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlayValue(System.Single,NDAPIWrapperSpace.Location,System.Int32[],NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Sets a value for a glove with the given location with a specified list of users and actuators.
+            </summary>
+            <returns><c>true</c>, if value was played, <c>false</c> otherwise.</returns>
+            <param name="intensity">Intensity.</param>
+            <param name="location">Right or left.</param>
+            <param name="users">Users.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators">
+            <summary>
+            Stops all the actuators.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location)">
+            <summary>
+            Stops all the actuators for each glove with the specified location.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(System.Int32)">
+            <summary>
+            Stops all the actuators for each glove with a specified user.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(System.Int32[])">
+            <summary>
+            Stops all the actuators for each glove with a specified list of users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Stops the specified actuator for all the gloves.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Stops a list of actuators for all the gloves.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,System.Int32)">
+            <summary>
+            Stops all the actuators with a specified location and user.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Stops all the actuators with a specified location and a list of users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Stops the specified actuator with a specified location for all the users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Stops a specified list of actuators with a specified location for all the users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Stops the specified actuator for all the gloves with a specified user.
+            </summary>
+            <returns><c>true</c>, if actuators was stoped, <c>false</c> otherwise.</returns>
+            <param name="user">User.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(System.Int32[],NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Stops the specified actuator for all the gloves with a specified list of users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="users">Users.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Stops the specified list of actuators for all the gloves with a specified user.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="user">User.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(System.Int32[],NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Stop the specified list of actuators for all the gloves with a specified list of users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="users">Users.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,System.Int32,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Stops the specified actuator with a specified location and user.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,System.Int32[],NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Stops the specified actuator with a specified location and a list of users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+            <param name="actuator">Actuator.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,System.Int32,NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Stops the specified list of actuators with a specified location and user.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="user">User.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.StopActuators(NDAPIWrapperSpace.Location,System.Int32[],NDAPIWrapperSpace.Actuator[])">
+            <summary>
+            Stops the specified list of actuators with a specified location and a list of users.
+            </summary>
+            <returns><c>true</c>, if actuators were stopped, <c>false</c> otherwise.</returns>
+            <param name="location">Right or left hand.</param>
+            <param name="users">Users.</param>
+            <param name="actuators">Actuators.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.SetLock(System.Boolean)">
+            <summary>
+            Sets the lock value for all gloves.
+            </summary>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.SetLock(System.Boolean,System.Int32)">
+            <summary>
+            Sets the lock value for all the gloves with a specified user.
+            </summary>
+            <param name="value">Value.</param>
+            <param name="user">User.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.SetLock(System.Boolean,System.Int32[])">
+            <summary>
+            Sets the lock value for all the gloves with a specified list of users.
+            </summary>
+            <param name="value">Value.</param>
+            <param name="users">Users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.SetLock(System.Boolean,NDAPIWrapperSpace.Location)">
+            <summary>
+            Sets the lock value for all the gloves with a specified location.
+            </summary>
+            <param name="value">Value.</param>
+            <param name="location">Location.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.SetLock(System.Boolean,System.Int32,NDAPIWrapperSpace.Location)">
+            <summary>
+            Sets the lock value for all the gloves with a specified location and user.
+            </summary>
+            <param name="value">Value.</param>
+            <param name="user">User.</param>
+            <param name="location">Location.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.SetLock(System.Boolean,System.Int32[],NDAPIWrapperSpace.Location)">
+            <summary>
+            Sets the lock value for all the gloves with a specified location and a list of users.
+            </summary>
+            <param name="value">Value.</param>
+            <param name="users">Users.</param>
+            <param name="location">Location.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.ReadSensations">
+            <summary>
+            Reads all sensations and adds them to the sensation list.
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.GetSensation(System.String)">
+            <summary>
+            Gets the sensation values.
+            </summary>
+            <param name="path">The sensation path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensationWithDelay(System.String,System.Int32)">
+            <summary>
+            Plays the sensation with the specified name and a delay in milliseconds.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="delay">Delay in milliseconds.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensationWithDelay(System.String,System.Int32,NDAPIWrapperSpace.Location)">
+            <summary>
+            Plays the sensation with the specified name and a delay in milliseconds.
+            The sensation is played for each glove with the specified location.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="delay">Delay in milliseconds.</param>
+            <param name="location">Hand location: right or left.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensationWithDelay(System.String,System.Int32,System.Int32)">
+            <summary>
+            Plays the sensation with the specified name and a delay in milliseconds.
+            The sensation is played for the specified user.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="delay">Delay in milliseconds.</param>
+            <param name="user">User index.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensationWithDelay(System.String,System.Int32,System.Int32[])">
+            <summary>
+            Plays the sensation with the specified name and a delay in milliseconds.
+            The sensation is played for each specified user.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="delay">Delay in milliseconds.</param>
+            <param name="users">Array of users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensationWithDelay(System.String,System.Int32,NDAPIWrapperSpace.Location,System.Int32)">
+            <summary>
+            Plays the sensation with the specified name and a delay in milliseconds.
+            The sensation is played for the glove with the specified location and user index.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="delay">Delay in milliseconds.</param>
+            <param name="location">Hand location: right or left.</param>
+            <param name="user">User index.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensationWithDelay(System.String,System.Int32,NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Plays the sensation with the specified name and a delay in milliseconds.
+            The sensation is played for each specified user and the gloves with the specified location.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="delay">Delay in milliseconds.</param>
+            <param name="location">Hand location: right or left.</param>
+            <param name="users">Array of users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensation(System.String)">
+            <summary>
+            Plays the sensation with the specified name.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensation(System.String,NDAPIWrapperSpace.Location)">
+            <summary>
+            Plays the sensation with the specified name.
+            The sensation is played for each glove with the specified location.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="location">Hand location: right or left.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensation(System.String,System.Int32)">
+            <summary>
+            Plays the sensation with the specified name.
+            The sensation is played for the specified user.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="user">User index.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensation(System.String,System.Int32[])">
+            <summary>
+            Plays the sensation with the specified name.
+            The sensation is played for each specified user.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="users">Array of users.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensation(System.String,NDAPIWrapperSpace.Location,System.Int32)">
+            <summary>
+            Plays the sensation with the specified name.
+            The sensation is played for each glove with the specified location and user index.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="location">Hand location: right or left.</param>
+            <param name="user">User index.</param>
+        </member>
+        <member name="M:UnityDLL.Haptic.HapticSystem.PlaySensation(System.String,NDAPIWrapperSpace.Location,System.Int32[])">
+            <summary>
+            Plays the sensation with the specified name.
+            The sensation is played for each specified user and the gloves with the specified location.
+            </summary>
+            <returns><c>true</c>, if sensation was played, <c>false</c> otherwise.</returns>
+            <param name="name">The sensation name.</param>
+            <param name="location">Hand location: right or left.</param>
+            <param name="users">Array of users.</param>
+        </member>
+        <member name="T:UnityDLL.Motion.FingerMotionSensor">
+            <summary>
+            This class controls the movement of each finger
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxClenchAngleP">
+            <summary>
+            (Gloveone only) Maximum clench angle for proximal
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxClenchAngleI">
+            <summary>
+            (Gloveone only) Maximum clench angle for intermediate
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxClenchAngleD">
+            <summary>
+            (Gloveone only) Maximum clench angle for distal
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.minXValue">
+            <summary>
+            From the starting rotation, sets how many degrees can the finger be opened (to the top)
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxXValue">
+            <summary>
+            From the starting rotation, sets how many degrees can the finger be closed
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.minYValue">
+            <summary>
+            From the starting rotation, sets how many degrees can the finger be rotated to the left
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxYValue">
+            <summary>
+            From the starting rotation, sets how many degrees can the finger be rotated to the right
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxXValueToCloseY">
+            <summary>
+            From this degree, when the finger is being closed
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.applyLimits">
+            <summary>
+            True if the finger rotation must be limited in local space
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.tfObserver">
+            <summary>
+            Transform that checks the deviation of angles between the gizmo and itself
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.tfY">
+            <summary>
+            Y component of the proximal phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.tfX">
+            <summary>
+            X component of the proximal phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.lockX">
+            <summary>
+            Locks the X component
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.lockY">
+             <summary>
+            Locks the Y component
+             </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.tfP1X">
+            <summary>
+            Intermediate phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.tfP2X">
+            <summary>
+            Distal phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.degreesToTurnYToZero">
+            <summary>
+            At this X degree, the Y component turns to 0
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.enableHandClosingSimulation">
+            <summary>
+            Enable/disable the rotation of intermediate and distal phalanges
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.animCurveCloseSensitivityP1">
+            <summary>
+            AnimationCurve to determine how to close the intermediate phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.animCurveCloseSensitivityP2">
+            <summary>
+            AnimationCurve to determine how to close the intermediate phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxXDegrees">
+            <summary>
+            Max X degrees for proximal phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.minXDegrees">
+            <summary>
+            Min X degrees for proximal phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.maxYDegrees">
+            <summary>
+            Max Y degrees for proximal phalanx
+            </summary>
+        </member>
+        <member name="F:UnityDLL.Motion.FingerMotionSensor.minYDegrees">
+            <summary>
+            Min Y degrees for proximal phalanx
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.SetLimits(System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Method that sets the hand limits and the X turn limit to move Y axis to identity
+            </summary>
+            <param name="minXValue">minimum local X- degrees</param>
+            <param name="maxXValue">maximum local X+ degrees</param>
+            <param name="minYValue">minimum local Y- degrees</param>
+            <param name="maxYValue">maximum local Y+ degrees</param>
+            <param name="maxXValueToCloseY">Local X+ degrees that starts to be 0</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.#ctor(System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Constructor of FingerMotionSensor
+            </summary>
+            <param name="isThumb">Sets if finger is thumb</param>
+            <param name="numOfBones">Number of bones that finger has</param>
+            <param name="numOfSensors">Maximum number of sensors. If 2, it is thumb</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.SetHandMotionSensor(UnityDLL.Motion.MotionSensor)">
+            <summary>
+            Establishes the attached HandMotionSensor
+            </summary>
+            <param name="handMotionSensor">HandMotionSensor attached to the hand</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.SetCalibrationPose(UnityEngine.Quaternion,UnityEngine.Quaternion,UnityEngine.Quaternion)">
+            <summary>
+            Sets calibration pose. Keeps this rotation in order to recalibrate later to this rotations.
+            </summary>
+            <param name="boneProximal">Proximal bone rotation</param>
+            <param name="boneIntermediate">Intermediate bone rotation</param>
+            <param name="boneDistal">Distal bone rotation</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.Calibrate(UnityEngine.Quaternion,UnityEngine.Quaternion)">
+            <summary>
+            Calibrates bones to initial rotation
+            </summary>
+            <param name="qSensorProximal">Proximal sensor</param>
+            <param name="qSensorDistal">Distal sensor. Only AvatarVR thumbs</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.UpdateCalibrationPose(UnityEngine.Vector3)">
+            <summary>
+            Given the angle, establishes a new calibration pose
+            </summary>
+            <param name="worldAngle">Global rotation from the starting pose</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.GetCorrectedRotation(UnityEngine.Quaternion,System.Int32)">
+            <summary>
+            Corrects the rotation given by the glove to a rotation according to finger planes
+            </summary>
+            <param name="qRawRotation">Raw rotation of the finger</param>
+            <param name="boneId">Bone ID</param>
+            <returns>Corrected rotation to apply to bone</returns>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.SetBones(UnityEngine.GameObject@,UnityEngine.GameObject@,UnityEngine.GameObject@)">
+            <summary>
+            Sets bones GameObjects
+            </summary>
+            <param name="proximalBone">Proximal bone</param>
+            <param name="intermediateBone">Intermediate bone</param>
+            <param name="distalBone">Distal bone</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.SetBones(UnityEngine.Transform[])">
+            <summary>
+            Sets bones GameObjects through Transform[]
+            </summary>
+            <param name="bones">Array of Transforms</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.RotateBones(UnityEngine.Quaternion,UnityEngine.Quaternion)">
+            <summary>
+            AvatarVR method. Rotate bones of finger. For thumb finger, it is necessary the second parameter
+            </summary>
+            <param name="qRawRotationProximal">Proximal phalanx raw rotation</param>
+            <param name="qRawRotationDistal">Distal phalanx raw rotation</param>
+            <returns>Quaternion[i][j] where "i" is the phalanx, and "j" the Y and X component</returns>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.RotateBonesWithoutRestrictions(UnityEngine.Quaternion,UnityEngine.Quaternion)">
+            <summary>
+            AvatarVR method. Rotate bones of finger. For thumb finger, it is necessary the second parameter
+            </summary>
+            <param name="qRawRotationProximal">Proximal phalanx raw rotation</param>
+            <param name="qRawRotationDistal">Distal phalanx raw rotation</param>
+            <returns>Quaternion[i][j] where "i" is the phalanx, and "j" the Y and X component</returns>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.RotateBones(System.Single)">
+            <summary>
+            Gloveone method. Rotate bones of finger given float value from 0 to 1
+            </summary>
+            <param name="fingerFlexRotation">Value from 0 to 1 which represents how closed is the finger</param>
+            <returns>Quaternion[i][j] where "i" is the phalanx, and "j" the Y and X component</returns>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.SetHandClosingSimulationParameters(System.Single,System.Single,System.Single,System.Single,System.Single,UnityEngine.AnimationCurve,UnityEngine.AnimationCurve,System.Boolean,System.Boolean)">
+            <summary>
+            Set all the hand closing simulation values
+            </summary>
+            <param name="desiredDegreesForP1OnClosing">Maximum angle of intermediate phalanx</param>
+            <param name="degreesToTurnP1ToPreviousValue">Closing factor for intermediate phalanx (it should be higher than desiredDegreesForP1OnClosing)</param>
+            <param name="desiredDegreesForP2OnClosing">Maximum angle of distal phalanx</param>
+            <param name="degreesToTurnP2ToPreviousValue">Closing factor for distal phalanx (it should be higher than desiredDegreesForP2OnClosing)</param>
+            <param name="degreesToTurnYToZero">From this angle, the rotation of Y axis is 0</param>
+            <param name="animCurveCloseSensitivityP1">AnimationCurve factor for the intermediate phalanx</param>
+            <param name="animCurveCloseSensitivityP2">AnimationCurve factor for the distal phalanx</param>
+            <param name="lockX">Lock rotation along X axis</param>
+            <param name="lockY">Lock rotation along Y axis</param>
+        </member>
+        <member name="M:UnityDLL.Motion.FingerMotionSensor.HandClosingSimulation(UnityEngine.Quaternion[][])">
+            <summary>
+            Calculates the middle and distal finger rotations
+            </summary>
+            <param name="fingersRotations">Proximal phalanx quaternions</param> 
+            <returns>Proximal, intermediate and distal phalanges quaternions</returns>
+        </member>
+        <member name="T:UnityDLL.Motion.MotionSensor">
+            <summary>
+            Controls rotations of the model upper parts and hand
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.#ctor">
+            <summary>
+            Constructor. Initializes properties
+            </summary>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.SetBone(UnityEngine.GameObject)">
+            <summary>
+            Sets the bone GameObject
+            </summary>
+            <param name="bone">Bone GameObject</param>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.SetCalibrationPose(UnityEngine.Quaternion,UnityEngine.Quaternion)">
+            <summary>
+            Sets calibration pose. Keeps this rotation in order to recalibrate later to this rotations.
+            </summary>
+            <param name="qBoneInitialRot">Initial bone rotation</param>
+            <param name="qSensorAlign">Sensor rotation</param>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.UpdateCalibrationPose(UnityEngine.Vector3)">
+            <summary>
+            Given the  angle, establishes a new calibration pose
+            </summary>
+            <param name="worldAngle">Global Y angle from the starting pose</param>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.Calibrate(UnityEngine.Quaternion)">
+            <summary>
+            Calibrates bone to initial rotation
+            </summary>
+            <param name="qSensor">Current sensor rotation</param>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.GetSensorInitRot">
+            <summary>
+            Returns the initial sensor rotation, needed to calculate the fingers orientation
+            </summary>
+            <returns>Initial sensor rotation</returns>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.GetRawRotation">
+            <summary>
+            Returns the current raw rotation
+            </summary>
+            <returns>Sensor raw rotation</returns>
+        </member>
+        <member name="M:UnityDLL.Motion.MotionSensor.RotateBone(UnityEngine.Quaternion,System.Boolean)">
+            <summary>
+            Given a raw sensor rotation, calculates the Y and X components of the corrected rotation
+            </summary>
+            <param name="qRawRotation">Raw sensor rotation</param>
+            <param name="forceInstantaneousMovement">Force the value to be assigned, without lerp</param>
+            <returns>Y and X components of the corrected rotation</returns>
+        </member>
+        <member name="T:SensorID">
+            <summary>
+            Enumaration that contains the bones that our device is going to feed
+            </summary>
+        </member>
+        <member name="T:Gesture">
+            <summary>
+            Recognized gestures
+            </summary>
+        </member>
+        <member name="T:NDDevice">
+            <summary>
+            This class acts as bridge between physical glove and the model. Data collected from glove is stored here.
+            </summary>
+        </member>
+        <member name="T:NDDevice.TypeOfDevice">
+            <summary>
+            Device in use. Depending on the technology used in the glove, it can be identified as Gloveone or AvatarVR.
+            </summary>
+        </member>
+        <member name="T:NDDevice.Trackband">
+            <summary>
+            Trackband in use. It can be Trackband3 (Torso, arm and forearm), Trackban2 (Arm and forearm) or none.
+            </summary>
+        </member>
+        <member name="F:NDDevice.device">
+            <summary>
+            Type of device.
+            </summary>
+        </member>
+        <member name="F:NDDevice.trackband">
+            <summary>
+            Type of Trackband plugged.
+            </summary>
+        </member>
+        <member name="F:NDDevice.RAW_SOURCE_TAG">
+            <summary>
+            Raw source tag for mux
+            </summary>
+        </member>
+        <member name="F:NDDevice.GESTURES_SOURCE_TAG">
+            <summary>
+            Gestures source tag for mux
+            </summary>
+        </member>
+        <member name="F:NDDevice.deviceId">
+            <summary>
+            Device identifier.
+            </summary>
+        </member>
+        <member name="F:NDDevice.flexValues">
+            <summary>
+            Stored flex values (Gloveone only).
+            </summary>
+        </member>
+        <member name="F:NDDevice.flexOffset">
+            <summary>
+            Flex offset to avoid variable data (Gloveone only).
+            </summary>
+        </member>
+        <member name="F:NDDevice.serialKey">
+            <summary>
+            Unique SerialKey associated to the glove.
+            </summary>
+        </member>
+        <member name="F:NDDevice.handLocation">
+            <summary>
+            Hand location. With this property, it is defined as right or left glove.
+            By default, a right hand is expected. This is checked when the device is created in scene.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawChestData">
+            <summary>
+            GameObject where it is going to be stored the raw chest sensor data. (Only for AvatarVR with TB3)
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawArmData">
+            <summary>
+            GameObject where it is going to be stored the raw arm sensor data. (Only for AvatarVR with TB3/TB2)
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawForearmData">
+            <summary>
+            GameObject where it is going to be stored the raw forearm sensor data. (Only for AvatarVR with TB3/TB2)
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawHandData">
+            <summary>
+            GameObject where it is going to be stored the raw palm sensor data.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawThumb0Data">
+            <summary>
+            GameObject where it is going to be stored the raw thumb0 (proximal) sensor data.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawThumb1Data">
+            <summary>
+            GameObject where it is going to be stored the raw thumb1 (distal) sensor data.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawIndexData">
+            <summary>
+            GameObject where it is going to be stored the raw index sensor data.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawMiddleData">
+            <summary>
+            GameObject where it is going to be stored the raw middle sensor data.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawRingData">
+            <summary>
+            GameObject where it is going to be stored the raw ring sensor data.
+            </summary>
+        </member>
+        <member name="P:NDDevice.rawPinkyData">
+            <summary>
+            GameObject where it is going to be stored the raw pinky sensor data.
+            </summary>
+        </member>
+        <member name="F:NDDevice.isReady">
+            <summary>
+            Determines if the device is ready to use.
+            </summary>
+        </member>
+        <member name="T:NDDevice.isPinchGestureHandler">
+            <summary>
+            Pinch gesture delegate
+            </summary>
+        </member>
+        <member name="T:NDDevice.isMiddlePinchGestureHandler">
+            <summary>
+            Middle pinch delegate
+            </summary>
+        </member>
+        <member name="T:NDDevice.isThreePinchGestureHandler">
+            <summary>
+            Three pinch delegate
+            </summary>
+        </member>
+        <member name="T:NDDevice.isOkGestureHandler">
+            <summary>
+            OK gesture delegate
+            </summary>
+        </member>
+        <member name="T:NDDevice.isGunGestureHandler">
+            <summary>
+            Gun gesture delegate
+            </summary>
+        </member>
+        <member name="T:NDDevice.isPinchFistGestureHandler">
+            <summary>
+            Pinch fist delegate
+            </summary>
+        </member>
+        <member name="T:NDDevice.noneGestureHandler">
+            <summary>
+            None gesture delegate
+            </summary>
+        </member>
+        <member name="E:NDDevice.isPinchGestureEvent">
+            <summary>
+            Pinch gesture event
+            </summary>
+        </member>
+        <member name="E:NDDevice.isMiddlePinchGestureEvent">
+            <summary>
+            Middle pinch event
+            </summary>
+        </member>
+        <member name="E:NDDevice.isThreePinchGestureEvent">
+            <summary>
+            Three pinch event
+            </summary>
+        </member>
+        <member name="E:NDDevice.isOkGestureEvent">
+            <summary>
+            OK gesture event
+            </summary>
+        </member>
+        <member name="E:NDDevice.isGunGestureEvent">
+            <summary>
+            Gun gesture event
+            </summary>
+        </member>
+        <member name="E:NDDevice.isPinchFistGestureEvent">
+            <summary>
+            Pinch fist event
+            </summary>
+        </member>
+        <member name="E:NDDevice.noneGestureEvent">
+            <summary>
+            None gesture event
+            </summary>
+        </member>
+        <member name="F:NDDevice.isInitialValueSet">
+            <summary>
+            True if the initial rotation of each bone is established.
+            This is needed to calculate the following data of each bone.
+            </summary>
+        </member>
+        <member name="M:NDDevice.AddAvatarHMCListener(System.Action{UnityEngine.Quaternion[]})">
+            <summary>
+            Sets Avatar actions listener
+            </summary>
+            <param name="paramMethod">List of actions for AvatarVR</param>
+        </member>
+        <member name="M:NDDevice.AddGloveoneHMCListener(System.Action{UnityEngine.Quaternion,System.Single[]})">
+            <summary>
+            Sets Gloveone actions listener
+            </summary>
+            <param name="paramMethod">List of actions for Gloveone</param>
+        </member>
+        <member name="M:NDDevice.RetrieveSensorsData">
+            <summary>
+            Gets sensors data from device and store in raw variables
+            </summary>
+        </member>
+        <member name="M:NDDevice.GetHapticController">
+            <summary>
+            Gets HapticController associated to device
+            </summary>
+            <returns>HapticController in use</returns>
+        </member>
+        <member name="M:NDDevice.CreateDevice(System.Int32)">
+            <summary>
+            Creates a NDDevice given an deviceID
+            </summary>
+            <param name="deviceId">DeviceID that is going to be used to create the NDDevice</param>
+            <returns></returns>
+        </member>
+        <member name="M:NDDevice.GetGloveByDeviceID(System.Int32)">
+            <summary>
+            Attach the physical device (the first one with its location) to the hand in scene.
+            </summary>
+            <param name="deviceId">Number IMUs that the device has.</param>
+        </member>
+        <member name="M:NDDevice.GetRawOrientation(System.Int32)">
+            <summary>
+            Given a sensor ID, returns the raw orientation of the sensor
+            </summary>
+            <param name="sensorId">Sensor ID from where is going to be read the data</param>
+            <returns>Raw orientation in quaternion</returns>
+        </member>
+        <member name="M:NDDevice.GetAcceleration">
+            <summary>
+            Gets the hand acceleration
+            </summary>
+            <returns>Raw acceleration in Vector3</returns>
+        </member>
+        <member name="M:NDDevice.ResetFlex">
+            <summary>
+            Reset current limits of flex sensors
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

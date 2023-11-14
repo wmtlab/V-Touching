@@ -1,0 +1,1620 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NDAPIUnity</name>
+    </assembly>
+    <members>
+        <member name="T:NDAPIUnity.GloveController">
+            <summary>Manages a specific physical glove and its communications. The NDController class instantiates one GloveController for each glove connected to the system. This
+            class is derived from MonoBehaviour, so it works as a component attached to a GameObject. At the moment of instantiation, the NDController class instantiates an
+            empty object, attaches a GloveController component and then starts it after configuration.</summary>
+        </member>
+        <member name="P:NDAPIUnity.GloveController.Location">
+            <summary>
+            Gets the hand location, right or left.
+            </summary>
+            <value>The hand location.</value>
+        </member>
+        <member name="P:NDAPIUnity.GloveController.DeviceId">
+            <summary>
+            Gets the device ID.
+            </summary>
+            <value>The hand location.</value>
+        </member>
+        <member name="P:NDAPIUnity.GloveController.SerialKey">
+            <summary>
+            Gets the device serial key.
+            </summary>
+            <value>The hand location.</value>
+        </member>
+        <member name="P:NDAPIUnity.GloveController.NumberOfActuators">
+            <summary>
+            Gets the device number of actuators.
+            </summary>
+            <value>The hand location.</value>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.#ctor(NDAPIWrapperSpace.NDAPI,System.Int32)">
+            <summary>
+            Initializes the glove controller.
+            </summary>
+            <param name="service">Connectio to the service.</param>
+            <param name="deviceId">Device ID.</param>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getNumberOfActuators">
+            <summary>Gets the number of actuators of the specified device</summary>
+            <returns>Number of actuators or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.hasActuator(NDAPIWrapperSpace.Actuator)">
+            <summary>Determines whether the specified device has a specific actuator</summary>
+            <param name="id">An Actuator enum</param>
+            <returns>1 if the device has the actuator, 0 if not or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getActuatorsState(System.Single[])">
+            <summary>Gets the actuators level of power</summary>
+            <param name="values">A pointer to a float array in which the actuators state will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.setActuatorState(NDAPIWrapperSpace.Actuator,System.Single,System.Int32)">
+            <summary>Sets the state of a specific actuator</summary>
+            <param name="id">An Actuator enum</param>
+            <param name="level">The actuator level of power between 0.0 and 1.0</param>
+            <param name="trackId">The mixer track</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.setActuatorsState(System.Single[],System.Int32)">
+            <summary>Sets the state of all actuators</summary>
+            <param name="level">A pointer to a float array with the actuators level of power between 0.0 and 1.0</param>
+            <param name="trackId">The mixer track</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.setActuatorPulse(NDAPIWrapperSpace.Actuator,System.Single,System.Int32)">
+            <summary>Sets the state of a specific actuator for a limited period of time, then it is stopped</summary>
+            <param name="id">An Actuator enum</param>
+            <param name="level">The actuator level of power between 0.0 and 1.0</param>
+            <param name="duration">The time in milliseconds between 0 and 1024</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.setActuatorsStop">
+            <summary>Sets all actuators to a value of power of 0.0</summary>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.hasContact(NDAPIWrapperSpace.Contact)">
+            <summary>Determines wheter the specified device has a specific contact</summary>
+            <param name="id">A Contact enum</param>
+            <returns>1 if the device has the contact, 0 if not or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.areContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact)">
+            <summary>Determines if the contacts id1 and id2 are joined</summary>
+            <param name="id1">Contact identifier 1</param>
+            <param name="id2">Contact identifier 2</param>
+            <returns>1 if are joined, 0 if not or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getContactState(NDAPIWrapperSpace.Contact)">
+            <summary>Allows to know if a contact is pressed or not, and the group it belongs to</summary>
+            <param name="id">The contact identifier</param>
+            <returns>The group it belongs to, 0 if is not pressed or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getContactsState(System.Int32[])">
+            <summary>Allows to know if all contacts are pressed or not, and the group they belong to</summary>
+            <param name="values">A pointer to an int array in which the contacts state will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getNumberOfContacts">
+            <summary>Gets the number of contacts of the specified device</summary>
+            <returns>Number of contacts or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.Restart">
+            <summary>
+            LateUpdate is called after the animations but before rendering, OnGUI and ending events
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getParameter(NDAPIWrapperSpace.DriverParam,System.Single@)">
+            <summary>Gets the value of a specified driver param</summary>
+            <param name="paramId">A DriverParam enum</param>
+            <param name="outValue">A float where the value of the parameter will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getDeviceLocation">
+            <summary>Gets the device location</summary>
+            <returns>A Location enum if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.isConnected">
+            <summary>Determines whether the specified device identifier is connected</summary>
+            <returns>1 if is connected, 0 if not or an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getConnectionType">
+            <summary>Gets the connection type of the specified device</summary>
+            <returns>A ConnectionType enum if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getSerialKey(System.String@)">
+            <summary>Gets the serial key of the specified device</summary>
+            <param name="serial">Where the serial will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getBatteryLevel(System.Single@)">
+            <summary>Gets the battery level of the specified device</summary>
+            <param name="value">Where the battery level will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.GetTrackId">
+            <summary>
+            Gets a track identifier.
+            </summary>
+            <returns>Track identifier.</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.DisableTrack(System.Int32)">
+            <summary>
+            Disables a track.
+            </summary>
+            <param name="id">Track identifier.</param>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.UpdatePalmInfo">
+            <summary>
+            Updates the IMU info (rotation and acceleration)
+            </summary>  
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getPalmRotation(UnityEngine.Quaternion@)">
+            <summary>Gets the rotation of the IMU</summary>
+            <param name="q">A Quaternios where the values of rotation will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.GetRawRotation(UnityEngine.Quaternion@)">
+            <summary>
+            Returns the raw rotation of the glove. The IMU must be enabled.
+            </summary>
+            <param name="q">A Quaternios where the values of rotation will be stored</param>
+            <returns>The raw rotation.</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.getAcceleration(UnityEngine.Vector3@)">
+            <summary>Gets the acceleration of the IMU</summary>
+            <param name="v">A vector3d_t where the values of acceleration will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.CalibrateRotation(UnityEngine.Quaternion)">
+            <summary>
+            Calibrates the rotation of the IMU using a given rotation. The IMU must be enabled.
+            </summary>
+            <param name="rot">Reference rotation.</param>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.UpdatePalmRotation">
+            <summary>
+            Updates the rotation.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.GloveController.UpdatePalmAcceleration">
+            <summary>
+            Updates the acceleration.
+            </summary>
+        </member>
+        <member name="T:NDAPIUnity.HapticMixer">
+            <summary>
+            Haptic mixer. Stores a track for every user of the glove. Mixes their values in order to calculate the output of a 
+            channel, taking the highest. 
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.HapticMixer.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NDAPIUnity.HapticMixer"/> class.
+            </summary>
+            <param name="numChannels">Number of channels.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticMixer.AddTrack">
+            <summary>
+            Creates a new track.
+            </summary>
+            <returns>The id for the new track.</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticMixer.DisableTrack(System.Int32)">
+            <summary>
+            Disables the track.
+            </summary>
+            <param name="id">Track identifier.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticMixer.GetChannelValue(System.Int32)">
+            <summary>
+            Gets the channel mixed value given its id.
+            </summary>
+            <returns>The channel value.</returns>
+            <param name="id">Channel identifier.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticMixer.SetChannelValue(System.Int32,System.Int32,System.Single)">
+            <summary>
+            Adds a value to the given track and channel.
+            </summary>
+            <param name="trackId">Track identifier.</param>
+            <param name="channelId">Channel identifier.</param>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticMixer.SetToZero">
+            <summary>
+            Set all HapticTracks and its channels to zero
+            </summary>
+        </member>
+        <member name="T:NDAPIUnity.HapticTrack">
+            <summary>
+            Haptic track. Stores a value for each channel. Every object using a glove has an assigned track in the HapticMixer used by the GloveController.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.HapticTrack.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NDAPIUnity.HapticTrack"/> class.
+            </summary>
+            <param name="numChannels">Number of channels.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticTrack.Get(System.Int32)">
+            <summary>
+            Gets the value from a specified channel.
+            </summary>
+            <param name="id">Identifier.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticTrack.Set(System.Int32,System.Single)">
+            <summary>
+            Sets the value for a specified channel.
+            </summary>
+            <param name="id">Identifier.</param>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticTrack.Disable">
+            <summary>
+            Disables the track.
+            </summary>
+        </member>
+        <member name="T:NDAPIUnity.NDController">
+            <summary>
+            	<para>Manages all gloves connected to the system and provides the controllers required to access them.</para>
+            	<para>In order to use a glove you have to request the appropiate glove controller to the NDController class, which has static calls to retrieve a controller or a list
+            of controllers. It also has methods to check if any of the connected gloves is performing a contact action.</para>
+            </summary>
+            <example>
+            Example of use:
+            <code title="" description="" lang="CS">
+            HapticControler hc = NDController.GetController ();</code></example>
+        </member>
+        <member name="P:NDAPIUnity.NDController.Instance">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.NDController.OnApplicationQuit">
+            <summary>
+            Gets the ApplicationQuit event. Sets every actuator channel to 0.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.NDController.OnDestroy">
+            <summary>
+            Gets the Destroy event. Sets every actuator channel to 0.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.NDController.LateUpdate">
+            <summary>
+            LateUpdate is called after the animations but before rendering, OnGUI and ending events
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetGloveControllers">
+            <summary>
+            Gets all the glove controllers.
+            </summary>
+            <returns>Dictionary with the glove controllers for every connected glove.</returns>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GlovesIDs">
+            <summary>Returns an array with the ids for every connected device.</summary>
+            <returns>An array with the ids for every connected device.</returns>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetNumberOfDevices">
+            <summary>Returns the number of devices connected to the system.</summary>
+            <returns>The number of connected devices or an Error enum.</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                int numDevices = NDController.GetNumberOfDevices ();
+                
+                if (numDevices &lt; 0) {
+                    Debug.LogError ("Error retrieving number of devices: " + (Error)numDevices);
+                } else {
+                    print ("Number of connected devices: " + numDevices);
+                }        
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetNumberOfDevices(NDAPIWrapperSpace.Location)">
+            <summary>Returns the number of  left or right devices connected to the system.</summary>
+            <param name="location">Right or left.</param>
+            <returns>The number of connected devices or an Error enum.</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                Location hand = Location.LOC_LEFT_HAND;
+                int numDevices = NDController.GetNumberOfDevices (hand);
+                
+                if (numDevices &lt; 0) {
+                    Debug.LogError ("Error retrieving number of devices: " + (Error)numDevices);
+                } else {
+                    print ("Number of left devices: " + numDevices);
+                }        
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetHapticControllers(NDAPIUnity.HapticController[]@)">
+            <summary>Gets an HapticController for every connected glove. The returned HapticControllers are instatiated when called, so use this method just when needed.</summary>
+            <param name="hapticControllers">The array where the HapticControllers will be saved.</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController[] gloves;    
+                int status = NDController.GetHapticControllers (out gloves);
+                
+                if (status == 0) {
+                    for (int i = 0; i &lt; gloves.Length; i++) {
+                        print ("Glove " + i + " is connected by " + gloves [i].GetConnectionType ());    
+                    }
+                }        
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetHapticControllers(NDAPIWrapperSpace.Location,NDAPIUnity.HapticController[]@)">
+            <summary>Gets an HapticController for every connected glove of the selected hand. The returned HapticController are instatiated when called, so use this method
+            just when needed.</summary>
+            <param name="location">Right or left.</param>
+            <param name="hapticControllers">The array where the HapticControllers will be saved.</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                Location hand = Location.LOC_RIGHT_HAND;
+                HapticController[] gloves;    
+                int status = NDController.GetHapticControllers (hand, out gloves);
+                
+                if (status == 0) {
+                    for (int i = 0; i &lt; gloves.Length; i++) {
+                        print ("Glove " + i + " is connected by " + gloves [i].GetConnectionType ());    
+                    }
+                }        
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetController(NDAPIUnity.HapticController@)">
+            <summary>Gets the default HapticController regardless the hand. Use in case you just need a controller, no matter which hand or glove.</summary>
+            <overloads>Returns a controller for a glove.</overloads>
+            <param name="controller">The variable where the HapticController</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);
+                
+                if (status == 0) {
+                    //your code here    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetController(System.String,NDAPIUnity.HapticController@)">
+            <summary>Returns a HapticController for the given serial key.</summary>
+            <overloads>Returns a controller for a glove.</overloads>
+            <param name="controller">The variable where the HapticController</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetController(System.Int32,NDAPIUnity.HapticController@)">
+            <summary>Returns a HapticController for the given glove id.</summary>
+            <overloads>Returns a controller for a glove.</overloads>
+            <param name="controller">The variable where the HapticController</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);
+                
+                if (status == 0) {
+                    //your code here    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetController(NDAPIWrapperSpace.Location,NDAPIUnity.HapticController@)">
+            <summary>Gets the default HapticController for the selected hand. Use in case you just need a controller for that hand, no matter which glove.</summary>
+            <overloads>Returns a default controller for a glove.</overloads>
+            <param name="location">Right or left.</param>
+            <param name="controller">A glove's controller</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                Location hand = Location.LOC_RIGHT_HAND;
+                int status = NDController.GetController (hand,out glove);
+                
+                if (status == 0) {
+                    //your code here     
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetSensation(System.String)">
+            <summary>
+            Obtains the raw values from a sensation file, generated by the ND Suite Sensation Designer.
+            </summary>
+            <param name="path">Absolute path of the sensation file</param>
+            <returns> Sensation's raw data </returns>
+        </member>
+        <member name="M:NDAPIUnity.NDController.Init">
+            <summary>
+             NDController class constructor
+            </summary>	
+        </member>
+        <member name="M:NDAPIUnity.NDController.GetGlovesFromService">
+            <summary>
+            Updates the gloves list from the service.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.NDController.UpdateDictionary">
+            <summary>
+            Manages the dictionaries for the gloves.
+            </summary>
+        </member>
+        <member name="T:NDAPIUnity.HapticController">
+            <summary>
+            	<para>Class used to communicate with a glove, it has all the calls needed to send and retrieve data to and from the glove.</para>
+            	<para>A glove can be accesed by many different users ( "users" in this case can be understood as different classes that can access to the glove at
+            the same time), so the glove controller needs to manage all the calls to work properly. In order to do it, it has a track for every user; this way it can mix
+            the values it receives. When any user requests access to a glove, the system creates a new track and returns a custom HapticController object with a
+            reference to the assigned track.</para>
+            </summary>
+            <example>
+            Example of use:
+            <code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+             
+                void Start ()
+                {
+                    int status = NDController.GetController (out glove);
+                    
+                    if (status == 0) {
+                        glove.PlayPulse (Actuator.ACT_THUMB, 0.5f, 300); //Pulse at thumb tip, intensity 0.5, duration 300 ms.            
+                    }
+                }
+            }</code></example>
+        </member>
+        <member name="P:NDAPIUnity.HapticController.Location">
+            <summary>Returns the glove hand. The glove can be right-handed or left-handed.</summary>
+            <value>The glove hand, Right ot Left.</value>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void Start ()
+            {
+                HapticController glove = NDController.GetController ();
+                print ("This glove is from a " + glove.Location + " hand");
+                //"This glove is from a Right/Left hand"    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.#ctor(NDAPIUnity.GloveController)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NDAPIUnity.HapticController"/> class.
+            </summary>
+            <param name="gloveController">Glove controller.</param>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.Clone">
+            <summary>Clones the instance of this HapticController. The clone has a reference to the same glove controller as the original, but also a reference to its own track in the
+            glove controller. This way the values sent to the clone won't interfere with the ones sent to the original, and their values will be mixed by the glove
+            controller.</summary>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void Start ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);
+                
+                if (status == 0) {
+                    HapticController glove2 = glove.Clone ();
+                    HapticController glove3 = glove.Clone ();
+                    
+                    //All players use the same glove, but its controller treats them as different users
+                    Player player1 = new Player (glove);
+                    Player player2 = new Player (glove2);
+                    Player player3 = new Player (glove3);
+                }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.PlayValue(NDAPIWrapperSpace.Actuator,System.Single)">
+            <summary>Sets the actuator value. The value won't change until this method is called again. If there is somebody else setting the value to the same glove and actuator,
+            the higher value will prevail.</summary>
+            <param name="actuator">Actuator.</param>
+            <param name="level">Value. Must be between 0 and 1.</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            //Sets a 0.4 value and after 5 seconds sets a value of 0.
+            IEnumerator Example ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);
+                
+                if (glove != null) {
+                    glove.PlayValue (Actuator.ACT_MIDDLE, 0.4f);
+                    yield return new WaitForSeconds (5);
+                    glove.PlayValue (Actuator.ACT_MIDDLE, 0f);
+                }
+            }</code>
+            	<code title="Example2" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                void Play ()
+                {
+                    int isEnabled = glove.IsEnabled ();        
+                    if (isEnabled == 1) {
+                        glove.PlayValue (Actuator.ACT_INDEX, 0.6f);
+                    }
+                }
+                
+                void Stop ()
+                {
+                    int isEnabled = glove.IsEnabled ();        
+                    if (isEnabled == 1) {
+                        glove.PlayValue (Actuator.ACT_INDEX, 0f);
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.PlayPulse(NDAPIWrapperSpace.Actuator,System.Single,System.Int32)">
+            <summary>Plays a pulse in the given actuator during the given time. After that time, the actuator value returns to its previous value. If the current value is bigger
+            than the pulse value, it won't play.</summary>
+            <param name="actuator">Actuator.</param>
+            <param name="value">Value. Must be between 0 and 1.</param>
+            <param name="durationMillis">Duration in milliseconds.</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                public void Shake ()
+                {
+                    int isEnabled = glove.IsEnabled ();
+                    
+                    if (isEnabled == 1) {
+                        glove.PlayPulseAll (0.5f, 500);
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetNumberOfActuators">
+            <summary>Gets the number of actuators of the specified device</summary>
+            <returns>Number of actuators or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    
+                    int actuators = glove.GetNumberOfActuators;
+                    if (actuators &gt;= 0) {
+                        print ("Number of actuators: " + actuators);
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.HasActuator(NDAPIWrapperSpace.Actuator)">
+            <summary>Determines whether the specified device has a specific actuator</summary>
+            <param name="id">An Actuator enum</param>
+            <returns>1 if the device has the actuator, 0 if not or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    
+                    int status = glove.HasActuator (Actuator.ACT_PALM_PINKY_UP);
+                    if (status == 1) {
+                        print ("The glove has the PALM_PINKY_UP actuator");
+                    }     
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.SetActuatorsStop">
+            <summary>Sets all actuators to a value of power of 0.0</summary>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                void StopVibration ()
+                {
+                    int isEnabled = glove.IsEnabled ();        
+                    if (isEnabled == 1) {
+                        glove.SetActuatorsStop();
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.SetActuatorsState(System.Single[])">
+            <summary>Sets the state of all actuators</summary>
+            <param name="level">A pointer to a float array with the actuators level of power between 0.0 and 1.0</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            //sets a 0.6 value on the even fingers
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    
+                    int numActuators = glove.GetNumberOfActuators ();
+             
+                    if (numActuators &gt; 0) {
+                        float[] values = new float[numActuators];
+                        for (int i = 0; i &lt; values.Length; i++) {
+                            
+                            if ((i % 2) == 0) {
+                                values [i] = 0.6f;
+                            } else {
+                                values [i] = 0f;                        
+                            }
+                        }
+                        
+                        glove.SetActuatorsState (values);                
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetActuatorsState(System.Single[])">
+            <summary>Gets the actuators level of power</summary>
+            <param name="values">A pointer to a float array in which the actuators state will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+             
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                void MyMethod ()
+                {
+                    if (glove != null) {
+                        int numActuators = glove.GetNumberOfActuators ();
+                        
+                        if (numActuators &gt; 0) {
+                            float[] values = new float[numActuators];
+                            int status = glove.GetActuatorsState(values);
+                            
+                            if(status == 0){
+                                for (int i = 0; i &lt; values.Length; i++){
+                                    print ("Actuator " + i " value is " + values[i]);
+                                }
+                            }
+                        }            
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetNumberOfContacts">
+            <summary>Gets the number of contacts of the specified device</summary>
+            <returns>Number of contacts or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    
+                    int contacts = glove.GetNumberOfContacts ();
+                    if (contacts &gt;= 0) {
+                        print ("Number of contacts: " + contacts);
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.AreContactsJoined(NDAPIWrapperSpace.Contact,NDAPIWrapperSpace.Contact)">
+            <summary>Determines if the contacts id1 and id2 are joined</summary>
+            <param name="id1">Contact identifier 1</param>
+            <param name="id2">Contact identifier 2</param>
+            <returns>1 if are joined, 0 if not or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);
+                
+                if (status == 0) {
+                    int contact = glove.AreContactsJoined (Contact.CONT_INDEX, Contact.CONT_PALM);
+                        
+                    if (contact == 1) {
+                        print ("contact between index finger and palm");
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetContactState(NDAPIWrapperSpace.Contact)">
+            <summary>Allows to know if a contact is pressed or not, and the group it belongs to</summary>
+            <param name="id">The contact identifier</param>
+            <returns>The group it belongs to, 0 if is not pressed or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    
+                    int state = glove.GetContactState (Contact.CONT_PALM);
+                    if (state &gt; 0) {
+                        print ("Palm is in contact with " + (Contact)state);
+                    }    
+                }
+            }</code>
+            	<code title="Example2" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    
+                    if ((glove.GetContactState (Contact.CONT_PALM) &amp; (int)Contact.CONT_INDEX) != 0 
+                        &amp;&amp; (glove.GetContactState (Contact.CONT_PALM) &amp; (int)Contact.CONT_MIDDLE) != 0) {
+                        print ("Palm is in contact with Index y Middle");
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetContactsState(System.Int32[])">
+            <summary>Allows to know if all contacts are pressed or not, and the group they belong to</summary>
+            <param name="values">A pointer to an int array in which the contacts state will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+                
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                void MyMethod ()
+                {
+                    if (glove != null) {
+                        int numContacts = glove.GetNumberOfContacts ();
+                        
+                        if (numContacts &gt; 0) {
+                            int[] values = new int[numContacts];
+                            int status = glove.GetContactsState(values);
+                            
+                            if(status == 0){
+                                for (int i = 0; i &lt; values.Length; i++){
+                                    print ("Contact " + i " value is " + values[i]);
+                                }
+                            }
+                        }            
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.HasContact(NDAPIWrapperSpace.Contact)">
+            <summary>Determines wheter the specified device has a specific contact</summary>
+            <param name="id">A Contact enum</param>
+            <returns>1 if the device has the contact, 0 if not or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    
+                    int status = glove.HasContact (Contact.CONT_MIDDLE);
+                    if (status == 1) {
+                        print ("The glove has the middle finger contact ");
+                    }     
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetDeviceLocation">
+            <summary>Gets the device location</summary>
+            <returns>A Location enum if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    
+                    int location = glove.GetDeviceLocation ();
+                    if (location &gt;= 0) {
+                        print ("This glove is from a " + (Location)location + " hand.");
+                    }    
+                }
+            }</code>
+            	<code title="Example2" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    
+                    int location = glove.Location;
+                    if (location &gt;= 0) {
+                        print ("This glove is from a " + (Location)location + " hand.");
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetBatteryLevel(System.Single@)">
+            <summary>Gets the battery level of the specified device</summary>
+            <param name="value">Where the battery level will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);
+                
+                if (status == 0) {
+                    float battery = 0;
+                    status = glove.GetBatteryLevel (ref battery);
+                    if (status == 0) {
+                        print ("Battery level: " + battery);
+                    }
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.IsConnected">
+            <summary>Determines whether the specified device identifier is connected</summary>
+            <returns>1 if is connected, 0 if not or an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                void Update ()
+                {
+                    int gloveConnection = glove.IsConnected ();
+                    
+                    if (gloveConnection == 0) {
+                        print ("Glove disconnected");
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetConnectionType">
+            <summary>Gets the connection type of the specified device</summary>
+            <returns>A ConnectionType enum if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);
+                
+                if (status == 0) {
+                    int connection = glove.GetConnectionType ();
+                    if (connection &gt;= 0) {
+                        print ("Connection type: " + (ConnectionType)connection);
+                    }
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetParameter(NDAPIWrapperSpace.DriverParam,System.Single@)">
+            <summary>Gets the value of a specified driver param</summary>
+            <param name="paramId">A DriverParam enum</param>
+            <param name="outValue">A float where the value of the parameter will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    float firmwareVersion = 0;
+                    int status = glove.GetParameter (DriverParam.PARAM_FIRMWARE_VERSION, ref firmwareVersion);
+                    
+                    if (status == 0) {
+                        print ("Firmware version: " + firmwareVersion);
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetSerialKey(System.String@)">
+            <summary>Gets the serial key of the specified device</summary>
+            <param name="serial">Where the serial will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    string serial = "";
+                    int status = glove.GetSerialKey (ref serial);
+                    if (status == 0) {
+                        print ("Serial number: " + serial);
+                    }     
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetPalmRotation(UnityEngine.Quaternion@)">
+            <summary>Gets the rotation of the hand sensor</summary>
+            <param name="q">A Quaternion where the values of rotation will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    Quaternion q = new Quaternion ();
+                    int status = glove.GetRotation (ref q);
+                    if (status == 0) {
+                        transform.rotation = q;
+                    }     
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetAcceleration(UnityEngine.Vector3@)">
+            <summary>Gets the acceleration of the IMU</summary>
+            <param name="v">A vector3d_t where the values of acceleration will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    Vector3 acceleration = new Vector3 ();
+                    int status = glove.GetAcceleration (ref acceleration);
+                    if (status == 0) {
+                        glove.PlayValueAll (0.6f * acceleration.magnitude);
+                    }
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.CalibrateRotation(UnityEngine.Quaternion)">
+            <summary>
+            Calibrates the rotation of the IMU using a given rotation. The IMU must be enabled.
+            </summary>
+            <param name="rot">Reference rotation.</param>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            public class MyClass : MonoBehaviour
+            {
+                HapticController glove;
+             
+                void Start ()
+                {
+                    NDController.GetController (out glove);
+                }
+                
+                void MyMethod ()
+                {
+                    if (glove != null) {
+                        glove.CalibrateRotation (this.transform.rotation); //calibrates IMU using the object's rotation    
+                    }
+                }    
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetRawRotation(UnityEngine.Quaternion@)">
+            <summary>
+            Returns the raw rotation of the glove. The IMU must be enabled.
+            </summary>
+            <param name="q">A Quaternion where the values of rotation will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                NDController.GetController (out glove);    
+                
+                if (glove != null) {
+                    Quaternion q = new Quaternion ();
+                    int status = glove.GetRawRotation (ref q);
+                    if (status == 0) {
+                        transform.rotation = q;
+                    }     
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetPalmNormal(UnityEngine.Vector3@)">
+            <summary>
+            Gets the palm normal vector. The IMU must be enabled.
+            </summary>
+            <param name="vector">A Vector3 where the normal values will be stored</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+            <example>
+            	<code title="Example" description="" lang="CS">
+            void MyMethod ()
+            {
+                HapticController glove;
+                int status = NDController.GetController (out glove);    
+             
+                if (glove != null) {
+                    Vector3 normal = new Vector3 ();
+                    status = glove.GetPalmNormal (ref normal);
+                    if (status == 0) {
+                        Debug.DrawLine (this.transform.position, this.transform.position + normal);
+                    }    
+                }
+            }</code>
+            </example>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetRotations(NDAPIWrapperSpace.imu_sensor_t[])">
+            <summary>
+            Gets the values from the IMUs.
+            </summary>
+            <param name="imus"> IMUs data,</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetNumberOfFlex">
+            <summary>
+            Gets the number of flex sensors.
+            </summary>
+            <returns>Number of flex sensors</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.GetFlexValues(System.Single[])">
+            <summary>
+            Gets the values from the flex sensors.
+            </summary>
+            <param name="values"> Flex sensors data</param>
+            <returns>Array with the flex sensors data normalized</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.CalibrateFlexSensors">
+            <summary>
+            Calibrate flex sensors. Once it is called, with the glove put on, open and close your hand twice in order to reset flex values.
+            </summary>
+            <returns>0 if succeeded, otherwhise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.SetSensation(System.Single[])">
+            <summary>
+            Sends a sensation's raw data to be played by the service.
+            </summary>
+            <param name="values"> Sensation data. </param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.SetSensation(System.String)">
+            <summary>
+            Sends a sensation file to be played by the service.
+            </summary>
+            <param name="path"> Path to the sensation file.</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.SetSensation(System.Single[],System.Int32)">
+            <summary>
+            Sends a sensation's raw data to be played by the service.
+            </summary>
+            <param name="values"> Sensation data. </param>
+            <param name="delay"> Time delay. </param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="M:NDAPIUnity.HapticController.SetSensation(System.String,System.Int32)">
+            <summary>
+            Sends a sensation file to be played by the service.
+            </summary>
+            <param name="path"> Path to the sensation file.</param>
+            <param name="delay"> Time delay.</param>
+            <returns>0 if succeeded, otherwise an Error enum</returns>
+        </member>
+        <member name="T:NDAPIUnity.Properties.Resources">
+            <summary>
+              Clase de recurso fuertemente tipado, para buscar cadenas traducidas, etc.
+            </summary>
+        </member>
+        <member name="P:NDAPIUnity.Properties.Resources.ResourceManager">
+            <summary>
+              Devuelve la instancia de ResourceManager almacenada en caché utilizada por esta clase.
+            </summary>
+        </member>
+        <member name="P:NDAPIUnity.Properties.Resources.Culture">
+            <summary>
+              Reemplaza la propiedad CurrentUICulture del subproceso actual para todas las
+              búsquedas de recursos mediante esta clase de recurso fuertemente tipado.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.showActivatedFingers">
+            <summary>
+            show the activated fingers.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.localAxis">
+            <summary>
+            The button axis.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.maxDepth">
+            <summary>
+            The furthest "down" you can push the button.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.onDepth">
+            <summary>
+            Position where the button engages
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.restDepth">
+            <summary>
+            Position where the button remains engaged 
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.springFactor">
+            <summary>
+            Multiplier for how fast the button springs back up.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.colliderOffset">
+            <summary>
+            Displacement between the collider boundaries and the button visible mesh.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.toggleButton">
+            <summary>
+            Determines if is a toggle button or held down button.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.maxVibrationIntensity">
+            <summary>
+            The maximum intensity of vibration
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.clickPulseIntensity">
+            <summary>
+            The intensity of click the button.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.clickPulseDuration">
+            <summary>
+            The duration of the click pulse.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.averageFactor">
+            <summary>
+            The average factor.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.divideForceFingers">
+            <summary>
+            Divide vibration strenght among all the fingers touching.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.divideForceFactor">
+            <summary>
+            Divide factor [0.5 = none].
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.dividePulseForceFactor">
+            <summary>
+            Divide factor for pulses
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.maxPushDisplacement">
+            <summary>
+            Relative movement caused by the fingers
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.numPulses">
+            <summary>
+            Times the button has been pulsed.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.globalAxis">
+            <summary>
+            Button absolute axis (world coordinates).
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.dicActiveColliders">
+            <summary>
+            Current colliders that are pushing the button associated to
+            the vertical displacement between their centers and the button
+            at the moment of the first collision
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.buttonState">
+            <summary>
+            State of the button
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.originalPosition">
+            <summary>
+            default position of the button when not pressed.	
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.vibrationValue">
+            <summary>
+            The vibration value.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.ButtonEffect.relativeDisplacement">
+            <summary>
+            The relative displacement of the button.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.#ctor(UnityEngine.Transform,UnityEngine.Vector3,UnityEngine.AudioSource)">
+            <summary>
+            Initializes an instance of the Button Effect.
+            </summary>
+            <param name="transform"> Transform of the button.</param>
+            <param name="localAxis"> Axis used for the button movement.</param>
+            <param name="audio"> On click sound. </param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.ColliderEnters(UnityEngine.Collider,NDAPIWrapperSpace.Actuator,NDAPIUnity.HapticController)">
+            <summary>
+            Calculate the displacement between the button and the collider. Use within OnTriggerEnter event.
+            </summary>
+            <param name="other"></param>
+            <param name="act"></param>
+            <param name="controller"></param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.ColliderExits(UnityEngine.Collider)">
+            <summary>
+            Updates the  fingers displacing the button. Use within OnTriggerExit event.
+            </summary>
+            <param name="other"></param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.UpdateEffect">
+            <summary>
+            Updates the effect and applies the vibrations.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.IsButtonOn">
+            <summary>
+            Determines if the button is on.
+            </summary>
+            <returns><c>true</c> if the button is on; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.GetNumPulses">
+            <summary>
+            Gets the number of pulses.
+            </summary>
+            <returns>The number pulses.</returns>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.ReleaseButton">
+            <summary>
+            Releases the button.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.MoveButton">
+            <summary>
+            Play a vibration to a specified actuator. Returns bool that tells wether the button is engaged or not
+            </summary>
+            <param name="act">Actuator</param>
+            <param name="col">Collider</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.setButtonDepth(System.Single)">
+            <summary>
+            Sets the button depth.
+            </summary>
+            <param name="depth">float</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.ButtonEffect.getButtonDepth">
+            <summary>
+            Gets the button depth.
+            </summary>
+            <returns>The button depth.</returns>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.PainEffect.listCol">
+            <summary>
+            List of colliders inside the fire effect radius.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.PainEffect.#ctor(System.Single,System.Single)">
+            <summary>
+            Initializes an instance of the Pain Effect.
+            </summary>
+            <param name="maxDistanceAux"> The maximun distance the pain can affect.</param>
+            <param name="multiplierAux"> Increases or decreases the power of the pain vibrations.</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.PainEffect.UpdateHand(UnityEngine.Collider)">
+            <summary>
+            Updates the effect adding a hand's collider that has entered the pain zone. Use within OnTriggerEnter event.
+            </summary>
+            <param name="col"></param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.PainEffect.Pulse(UnityEngine.Collider,System.Single,NDAPIUnity.HapticController,NDAPIWrapperSpace.Actuator)">
+            <summary>
+            Updates the effect's vibrations.
+            </summary>
+            <param name="hitColliders"> The finger's collider that has to be updated.</param>
+            <param name="distance"> The distance between the finger and the effect source.</param>
+            <param name="controller"> The HaptiController used to provide the vibration.</param>
+            <param name="act"> The finger's actuator.</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.PainEffect.Pain(NDAPIWrapperSpace.Actuator,UnityEngine.Collider,NDAPIUnity.HapticController)">
+            <summary>
+            Updates de pain's decay.
+            </summary>
+            <param name="act"> The finger's actuator.</param>
+            <param name="c"> The finger's collider that has to be updated.</param>
+            <param name="controller"> The HaptiController used to provide the vibration.</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.PainEffect.DeleteCol(UnityEngine.Collider)">
+            <summary>
+            Removes a finger collider from the effect.
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.SoundEffect.#ctor(System.Single,System.Single,UnityEngine.AudioSource)">
+            <summary>
+            Initializes an instance of the Sound Effect.
+            </summary>
+            <param name="maxDistanceAux"> Maximum distance of the effect.</param>
+            <param name="thresholdAux"> Intensity threshold for the animation</param>
+            <param name="soundAux"> Sound source</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.SoundEffect.Start">
+            <summary>
+            Starts the effect.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.SoundEffect.Stop">
+            <summary>
+            Stops the effect.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.SoundEffect.Pulse(System.Single,NDAPIWrapperSpace.Actuator,NDAPIUnity.HapticController)">
+            <summary>
+            Plays the effect over a finger.
+            </summary>
+            <param name="distance"> Distance between the finger and the effect's source.</param>
+            <param name="act"> Finger's actuator.</param>
+            <param name="controller"> The HaptiController used to provide the vibration.</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.SoundEffect.MoveAnimation">
+            <summary>
+            Tells whether an animation should play depending on the played sound and a threshold.
+            </summary>
+            <returns> True if the animation should play, otherwise false.</returns>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.TextureEffect.distance">
+            <summary>
+            Distance between fingers and textured object
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.TextureEffect.atenuation">
+            <summary>
+            Atenuation of the sensation.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.TextureEffect.speedFactor">
+            <summary>
+            Speed of change.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.TextureEffect.speedThreshold">
+            <summary>
+            Speed threshold.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.TextureEffect.staticValue">
+            <summary>
+            Value when static over the texture.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.TextureEffect.#ctor(UnityEngine.GameObject,System.Int32)">
+            <summary>
+            Initializes an instance of the Texture Effect.
+            </summary>
+            <param name="handObject"> Reference of the hand.</param>
+            <param name="solidLayer"> Reference to the layer for the solid effect.</param>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.TextureEffect.UpdateEffect">
+            <summary>
+            Updates the effect for every actuator. Use within the Update event.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.TextureEffect.UpdateFingerEffect(NDAPIWrapperSpace.Actuator,UnityEngine.Transform,System.Single)">
+            <summary>
+            Updates the effect for an individual actuator.
+            </summary>
+            <param name="act"> Finger's actuator</param>
+            <param name="finger"> Finger's transform</param>
+            <param name="speed"> Finger's speed</param>
+        </member>
+        <member name="T:NDAPIUnity.Sensations.WeightEffect">
+            <summary>
+            Haptic weight effect. Emulates weight sensation.
+            The object we want to apply this effect must be in the layer "WeightObjects" and have
+            the tag "Weightable"
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.colliderRadius">
+            <summary>
+            Radius of the collider we are interacting.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.catchSmoothFactor">
+            <summary>
+            How fast the ball follows the hand (reduces jitter)
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.ballOffset">
+            <summary>
+            Distance from the ball to the palm
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.accelFactor">
+            <summary>
+            Defines the acceleration scale and when the ball is released, the bigger, the sooner
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.palmInclinationLimit">
+            <summary>
+            How much the hand is tilted to drop the ball [0-1]
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.massFactorDynamic">
+            <summary>
+            How the weight affects to the vib sensation (dynamic)
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.massFactorStatic">
+            <summary>
+            How the weight affects the vib sensation (static)
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.receptionPulseValue">
+            <summary>
+            Factor to apply to the decay value.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.decayFactor">
+            <summary>
+            Decay factor.
+            </summary>
+        </member>
+        <member name="F:NDAPIUnity.Sensations.WeightEffect.maxBallSpeed">
+            <summary>
+            Determine the velocity from the maximum speed.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.WeightEffect.StartEffect">
+            <summary>
+            Initializes the <code>HapticController</code> and determines the collider layer.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.WeightEffect.UpdateEffect(UnityEngine.Vector3,UnityEngine.Vector3,UnityEngine.Vector3)">
+            <summary>
+            Update method. Gets the <code>GloveoneHandModel</code> associated and determines
+            velocity, forces and orientation of the hands
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.WeightEffect.IgnoreCollisionsWithSelf">
+            <summary>
+            Ignores the collisions with itself.
+            </summary>
+        </member>
+        <member name="M:NDAPIUnity.Sensations.WeightEffect.OnDrawGizmos">
+            <summary>
+            Gizmos to be drawn in the scene view.
+            </summary>
+        </member>
+        <member name="T:NDAPIUtils.TimedAveragedCircularBufferFloat">
+            <summary>
+            Timed averaged circular buffer.
+            </summary>
+        </member>
+        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "T:NDAPIUtils.TimedAveragedCircularBufferV3" -->
+        <member name="M:NDAPIUtils.TimedAveragedCircularBufferV3.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NDAPIUtils.TimedAveragedCircularBufferV3"/> class.
+            </summary>
+        </member>
+        <member name="M:NDAPIUtils.TimedAveragedCircularBufferV3.addValue(System.Single,UnityEngine.Vector3)">
+            <summary>
+            Adds a value to the buffer.
+            </summary>
+            <param name="time">Time.</param>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:NDAPIUtils.TimedAveragedCircularBufferV3.getAverage(System.Single)">
+            <summary>
+            Gets the average of the last n values within a specified time window.
+            </summary>
+            <returns>The average.</returns>
+            <param name="targetTime">Target time.</param>
+        </member>
+        <!-- El comentario XML con formato incorrecto se ha omitido para el miembro "T:NDAPIUtils.TimedCircularBuffer`1" -->
+        <member name="M:NDAPIUtils.TimedCircularBuffer`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="!:TimedCircularBuffer`1"/> class.
+            </summary>
+        </member>
+        <member name="M:NDAPIUtils.TimedCircularBuffer`1.addValue(System.Single,`0)">
+            <summary>
+            Adds a value to the buffer.
+            </summary>
+            <param name="time">Time.</param>
+            <param name="value">Value.</param>
+        </member>
+        <member name="M:NDAPIUtils.TimedCircularBuffer`1.getValue(System.Single,System.Single@)">
+            <summary>
+            Gets the value added at a given time. Returns the first value wich time its bigger than the given time and the exact time it was added.
+            </summary>
+            <returns>The value.</returns>
+            <param name="targetTime">Target time.</param>
+            <param name="time">Exact time the value was added.</param>
+        </member>
+    </members>
+</doc>
