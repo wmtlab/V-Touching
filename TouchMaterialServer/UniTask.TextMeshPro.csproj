@@ -56,7 +56,7 @@
      <Compile Include="Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.cs" />
      <Compile Include="Assets\Plugins\UniTask\Runtime\External\TextMeshPro\TextMeshProAsyncExtensions.InputField.cs" />
  <Reference Include="Unity.TextMeshPro">
- <HintPath>D:/SvnWorkSpaces/Unity/TouchMaterial/TouchMaterialServer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>D:/Unity/V-Touching/TouchMaterialServer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.36f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -290,16 +290,16 @@
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.36f1/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Advertisements">
- <HintPath>D:/SvnWorkSpaces/Unity/TouchMaterial/TouchMaterialServer/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+ <HintPath>D:/Unity/V-Touching/TouchMaterialServer/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>D:/SvnWorkSpaces/Unity/TouchMaterial/TouchMaterialServer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>D:/Unity/V-Touching/TouchMaterialServer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>D:/SvnWorkSpaces/Unity/TouchMaterial/TouchMaterialServer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>D:/Unity/V-Touching/TouchMaterialServer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>D:/SvnWorkSpaces/Unity/TouchMaterial/TouchMaterialServer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>D:/Unity/V-Touching/TouchMaterialServer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.36f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
