@@ -910,8 +910,8 @@ MonoBehaviour:
     - {fileID: 8462162091295909904}
     - {fileID: 8461526745181053776}
     - {fileID: 8462020766155788296}
-    _frameCount: 512
-    _useCompression: 1
+    _frameCount: 1
+    _useCompression: 0
   ToRecordAcc: 0
   RecordName: hongbao001
 --- !u!1 &2016554519
