@@ -27,7 +27,7 @@ Matlab R2021a, for the tactile encoding/decoding used in this project. If you wa
 8. If you want to control the position of the hand without VR, you can set **Use Vr** (will be introduced later) to false. Then, you can control the position of the hand with W, A, S, and D keys. The position reset key is Q.
 
 ## 4. Data Source
-In this project, we provide [some data](TouchMaterialServer/Assets/_Project/Materials/DUT) for direct testing of our application. Additionally, we have placed the data source and usage instructions in another repository.
+In this project, we provide [some data](TouchMaterialServer/Assets/_Project/Materials/DUT) for direct testing of our application. Additionally, we have placed the data source and usage instructions in another repository: [V-Touching-Data](https://github.com/wmtlab/V-Touching-Data).
 
 ## 4. Project Structure
 ### 4.1 Client Main Scene
