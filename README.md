@@ -29,8 +29,8 @@ Matlab R2021a, for the tactile encoding/decoding used in this project. If you wa
 ## 4. Data Source
 In this project, we provide [some data](TouchMaterialServer/Assets/_Project/Materials/DUT) for direct testing of our application. Additionally, we have placed the data source and usage instructions in another repository: [V-Touching-Data](https://github.com/wmtlab/V-Touching-Data).
 
-## 4. Project Structure
-### 4.1 Client Main Scene
+## 5. Project Structure
+### 5.1 Client Main Scene
 Notice: Some unimportant objects are ignored in the following description.
 
     App: {
@@ -58,7 +58,7 @@ When the **App** object is selected, you can see the settings of the client in t
 4. **Video Controller**: The controller of the video feedback. The video feedback is from the server. **Raw Image** is the RawImage object in **Canvas**. **Interval Frames** is the interval physics frames between two video frames.
 5. **Tactile Controller**: **Actuator Controller** is an adapter for the tactile glove to render the tactile feedback. You can edit Assets/_Project/Scripts/TactileActuator/TactileActuatorController.cs to adapt to other tactile gloves. Generally, there should be an array of actuators in **Actuator Controller**, which is corresponding one-to-one to **Tactile Controller/Detectors** in the server's **App** object. **Frame Count** is the number of frames in a tactile feedback message, while **Use Compression** is whether to use the decoder.
 
-### 4.2 Server Main Scene
+### 5.2 Server Main Scene
 Notice: Some unimportant objects are ignored in the following description.
 
     App: {
@@ -88,10 +88,10 @@ When the **App** object is selected, you can see the settings of the server in t
 3. **Video Controller**: Capture the view and send the video frames to the client project. **Main Camera** is filled with **Main Camera** in the scene. **Interval Frames** is the interval physics frames between two video frames.
 4. **Tactile Controller**: Obtain the tactile feedbacks, send them to the encoder (optional), and send the encoded tactile feedbacks to the client project. **Detectors** is an array of the tactile points. The order should be the same as the actuators in the client project. **Frame Count** is the number of frames in a tactile feedback message, while **Use Compression** is whether to use the encoder.
 
-### 4.3 Encoder/Decoder Project
+### 5.3 Encoder/Decoder Project
 ... Introduction still at work...
 
-## 5. License
+## 6. License
 This project is licensed under the GPL 3.0 License - see the LICENSE file for details.
 
 Referenced projects:
