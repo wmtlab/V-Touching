@@ -1,6 +1,7 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Sockets;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace TouchMaterial
@@ -44,7 +45,7 @@ namespace TouchMaterial
             return true;
         }
 
-        public bool SendData(byte[] data)
+        public bool SendData(byte[] data, int offset = 0, int length = -1)
         {
             if (_socket == null)
             {
@@ -52,10 +53,15 @@ namespace TouchMaterial
             }
             try
             {
-                UniTask.RunOnThreadPool(() =>
+                if (length == -1)
                 {
-                    _socket.SendTo(data, _remoteEndPoint);
-                }).Forget();
+                    length = data.Length;
+                }
+                Task.Run(async () =>
+                {
+                    int res = await _socket.SendToAsync(new ArraySegment<byte>(data, offset, length),
+                        SocketFlags.None, _remoteEndPoint);
+                });
                 return true;
             }
             catch (System.Exception ex)

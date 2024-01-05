@@ -1,13 +1,13 @@
 {
-    "RemoteIp": "127.0.0.1",
     "LocalIp": "127.0.0.1",
-    "RemotePosePort": 8901,
+    "RemoteIp": "127.0.0.1",
     "LocalVideoPort": 8902,
     "LocalTactilePort": 8903,
+    "RemotePosePort": 8901,
     "DecodeSendPort": 5300,
     "DecodeReceivePort": 5302,
     "PoseBufferSize": 1024,
     "VideoBufferSize": 16384,
     "TactileBufferSize": 8192,
-    "EncodedTactileBufferSize": 8192
+    "DecodeTactileBufferSize": 8192
 }

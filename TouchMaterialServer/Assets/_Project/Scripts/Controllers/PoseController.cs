@@ -9,8 +9,8 @@ namespace TouchMaterial.Server
     {
         [SerializeField]
         private Transform[] _syncObjects;
-        [SerializeField, Range(0, 10)]
-        private int _timeOutSec;
+        [SerializeField, Range(0f, 10f)]
+        private float _timeOutSec;
 
         private UdpReceiver _receiver;
         private ConcurrentQueue<byte[]> _queue;
@@ -44,7 +44,15 @@ namespace TouchMaterial.Server
 
         public void Tick()
         {
-            _queue.TryDequeue(out byte[] data);
+            byte[] data = null;
+            while (!_queue.IsEmpty)
+            {
+                _queue.TryDequeue(out data);
+            }
+            if (data == null)
+            {
+                return;
+            }
             int index = 0;
             index = data.ReadFloat(index, out float tick);
             _lastPoseTime = tick + _timeOffset;

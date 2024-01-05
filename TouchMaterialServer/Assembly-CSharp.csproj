@@ -53,12 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\_Project\Scripts\Adapters\EncodeHelper.cs" />
+     <Compile Include="Assets\_Project\Scripts\Adapters\IEncodeHelper.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\App.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\NetworkSetting.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\PoseController.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\TactileController.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\VideoController.cs" />
-     <Compile Include="Assets\_Project\Scripts\Test\MaterialMovement.cs" />
      <Compile Include="Assets\_Project\Scripts\TouchComponents\TactileDetector.cs" />
      <Compile Include="Assets\_Project\Scripts\TouchComponents\TactileObject.cs" />
      <Compile Include="Assets\_Project\Scripts\Utils\Serialization\BinarySerializer.cs" />

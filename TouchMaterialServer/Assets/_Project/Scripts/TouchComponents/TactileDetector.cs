@@ -6,19 +6,13 @@ namespace TouchMaterial.Server
     public class TactileDetector : MonoBehaviour
     {
         private List<TactileObject> _touchedObjects = new List<TactileObject>();
-
-        // 0f to +1f, 0f for not collided
-        public float GetTactileUnsigned()
-        {
-            float intensity = _touchedObjects.Count > 0 ? _touchedObjects[0].GetTactileUnsigned(transform.position) : 0f;
-
-            return intensity;
-        }
+        private static readonly float[] EmptyTactile = new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f };
 
         // -1f to +1f, 0f for not collided
-        public float GetTactileSigned()
+        public float[] GetTactile()
         {
-            float intensity = _touchedObjects.Count > 0 ? _touchedObjects[0].GetTactileSigned(transform.position) : 0f;
+            float[] intensity = _touchedObjects.Count > 0 ?
+                _touchedObjects[0].GetTactile(transform.position, transform.up) : EmptyTactile;
 
             return intensity;
         }

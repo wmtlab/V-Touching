@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Sockets;
-using Cysharp.Threading.Tasks;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace TouchMaterial
@@ -41,14 +41,14 @@ namespace TouchMaterial
                 _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 _socket.Bind(_localEndPoint);
                 _isReceiving = true;
-                UniTask.RunOnThreadPool(ReceiveData).Forget();
+                Task.Run(ReceiveDataAsync);
 
                 return true;
             }
             catch { return false; }
         }
 
-        private void ReceiveData()
+        private async Task ReceiveDataAsync()
         {
             while (_isReceiving)
             {
@@ -56,8 +56,9 @@ namespace TouchMaterial
                 {
                     EndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
                     byte[] buffer = new byte[_bufferSize];
-                    int length = _socket.ReceiveFrom(buffer, ref endPoint);
-                    _onReceiveData?.Invoke(buffer, length);
+                    ArraySegment<byte> segment = new ArraySegment<byte>(buffer);
+                    var result = await _socket.ReceiveFromAsync(segment, SocketFlags.None, endPoint);
+                    _onReceiveData?.Invoke(buffer, result.ReceivedBytes);
                 }
                 catch (System.Exception ex)
                 {

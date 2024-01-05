@@ -59,7 +59,7 @@ namespace TouchMaterial.Client
                 return null;
             }
             byte[] data = null;
-            while (_queue.Count > 0)
+            while (!_queue.IsEmpty)
             {
                 _queue.TryDequeue(out data);
             }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace TouchMaterial.Client
@@ -8,156 +8,77 @@ namespace TouchMaterial.Client
     [Serializable]
     public class TactileController
     {
-        [SerializeField]
-        private TactileActuatorController _actuatorController;
+        private ITactileActuatorController _actuatorController;
         [SerializeField, Range(1, 1024)]
         private int _frameCount = 1;
         [SerializeField]
+        private int _taxelFixedSize = 8;
+        [SerializeField]
         private bool _useCompression;
 
-        private UdpReceiver _tactileReceiver;
-        private UdpReceiver _encodedReceiver;
-        private UdpSender _decodeSender;
+        private UdpReceiver _receiver;
+        private IDecodeHelper _decodeHelper;
 
         private ConcurrentQueue<byte[]> _queue;
-        private byte[] _encodedBuffer;
 
-        private float[][] _tactileCaches;   // [actuator][frame]
-        private bool[] _actuationStates;
+        private float[][] _tactileCaches;   // [actuator][signal]
+        private float[] _curSignals;
         private int _frameIdx;
 
-        public void Init(InitParams initParams)
-        {
-            _encodedBuffer = new byte[initParams.encodedBufferSize];
-            _queue = new ConcurrentQueue<byte[]>();
 
-            if (_useCompression)
-            {
-                _encodedReceiver = new UdpReceiver(
-                    initParams.localIp, initParams.localTactilePort, initParams.encodedBufferSize,
-                    (data, length) =>
-                    {
-                        _queue.Enqueue(data);
-                    });
-                _decodeSender = new UdpSender(initParams.decodeIp, initParams.decodeSendPort);
-                _tactileReceiver = new UdpReceiver(
-                    initParams.localIp, initParams.decodeReceivePort, initParams.tactileBufferSize,
-                    DeserializeTactile);
-            }
-            else
-            {
-                _tactileReceiver = new UdpReceiver(
-                    initParams.localIp, initParams.localTactilePort, initParams.tactileBufferSize,
-                    (data, length) =>
-                    {
-                        _queue.Enqueue(data);
-                    });
-            }
+        public void Init(string localIp, int localPort, int bufferSize, DecodeHelper.InitParams initParams)
+        {
+            _actuatorController = new TactileActuatorController();
+            _queue = new ConcurrentQueue<byte[]>();
+            _receiver = new UdpReceiver(localIp, localPort, bufferSize,
+                (data, length) =>
+                {
+                    _queue.Enqueue(data);
+                });
+
+            initParams.useCompression = _useCompression;
+            initParams.actuatorCount = _actuatorController.ActuatorCount;
+            initParams.frameCount = _frameCount;
+            initParams.taxelFixedSize = _taxelFixedSize;
+            _decodeHelper = new DecodeHelper(initParams);
+
+            _curSignals = new float[_taxelFixedSize];
+            _frameIdx = 0;
         }
 
         public void Start()
         {
-            if (_useCompression)
-            {
-                _decodeSender?.Start();
-                _encodedReceiver?.Start();
-            }
-
-            _tactileReceiver?.Start();
+            _decodeHelper?.Start();
+            _receiver?.Start();
         }
 
         public void Stop()
         {
             _actuatorController.StopAll();
-
-            if (_useCompression)
-            {
-                _decodeSender?.Close();
-                _encodedReceiver?.Close();
-            }
-
-            _tactileReceiver?.Close();
+            _decodeHelper?.Stop();
+            _receiver?.Close();
         }
 
         public void Tick()
         {
             byte[] data = null;
-            while (_queue.Count > 0)
+            while (!_queue.IsEmpty)
             {
                 _queue.TryDequeue(out data);
             }
-            if (_useCompression)
-            {
-                DecodeTactile(data);
-            }
-            else
-            {
-                DeserializeTactile(data, default);
-            }
+            Task.Run(() => _decodeHelper.Decode(data, OnDecodeFinished));
             if (_frameIdx < _frameCount)
             {
                 UpdateTactile();
             }
         }
 
-        private void DecodeTactile(byte[] data)
+        private void OnDecodeFinished(float[][] tactileCaches)
         {
-            if (data == null)
-            {
-                return;
-            }
-            _encodedBuffer.WriteInt(0, 1);
-            data.Take(data.Length - sizeof(int)).ToArray().CopyTo(_encodedBuffer, sizeof(int));
-            _decodeSender.SendData(_encodedBuffer);
+            _tactileCaches = tactileCaches;
+            _frameIdx = 0;
         }
 
-        private void DeserializeTactile(byte[] buffer, int length)
-        {
-            if (buffer == null)
-            {
-                return;
-            }
-
-            if (_actuationStates == null)
-            {
-                _actuationStates = new bool[_actuatorController.ActuatorCount];
-                _tactileCaches = new float[_actuatorController.ActuatorCount][];
-                for (int i = 0; i < _actuatorController.ActuatorCount; i++)
-                {
-                    _tactileCaches[i] = new float[_frameCount];
-                }
-                _frameIdx = 0;
-            }
-            int index = 0;
-
-            try
-            {
-                for (int i = 0; i < _tactileCaches.Length; i++)
-                {
-                    for (int j = 0; j < _tactileCaches[i].Length; j++)
-                    {
-                        if (_useCompression)
-                        {
-                            index = buffer.ReadInt(index, out var intIntensity);
-                            float intensity = Int2FloatScaled(intIntensity);
-                            _tactileCaches[i][j] = intensity;
-                            continue;
-                        }
-                        else
-                        {
-                            index = buffer.ReadFloat(index, out var intensity);
-                            _tactileCaches[i][j] = intensity;
-                        }
-                    }
-
-                    _frameIdx = 0;
-                }
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                Debug.LogWarning(ex.ToString());
-            }
-        }
 
         private void UpdateTactile()
         {
@@ -170,43 +91,16 @@ namespace TouchMaterial.Client
                 return;
             }
 
-            for (int i = 0; i < _actuatorController.ActuatorCount; i++)
+            for (int i = 0; i < _tactileCaches.Length; i++)
             {
-                float tactile = Mathf.Abs(_tactileCaches[i][_frameIdx]);
-                if (Mathf.Approximately(tactile, 0f))
+                int startIdx = _frameIdx * _taxelFixedSize;
+                for (int j = 0; j < _taxelFixedSize; j++)
                 {
-                    if (_actuationStates[i])
-                    {
-                        _actuatorController.Stop(i);
-                        _actuationStates[i] = false;
-                    }
+                    _curSignals[j] = _tactileCaches[i][startIdx + j];
                 }
-                else
-                {
-                    _actuatorController.Play(i, tactile);
-                    _actuationStates[i] = true;
-                }
+                _actuatorController.Play(i, _curSignals);
             }
             _frameIdx++;
-        }
-
-        private float Int2FloatScaled(int i)
-        {
-            float ret = ((float)i) / (1 << 15);
-            return 1f - Mathf.Abs(ret) < 1e-4f ? 0f : ret;
-        }
-
-        public struct InitParams
-        {
-            public string localIp;
-            public int localTactilePort;
-
-            public string decodeIp;
-            public int decodeSendPort;
-            public int decodeReceivePort;
-
-            public int tactileBufferSize;
-            public int encodedBufferSize;
         }
     }
 }

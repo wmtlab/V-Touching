@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Linq;
-using LitJson;
+﻿using LitJson;
 using UnityEngine;
 
 namespace TouchMaterial.Client
@@ -15,7 +12,7 @@ namespace TouchMaterial.Client
         [SerializeField]
         private PoseController _poseController;
         [SerializeField]
-        private SteamVRAvatarInit _steamVrAvatarInit;
+        private VRSwitcher _vrSwitcher;
         [SerializeField]
         private VideoController _videoController;
         [SerializeField]
@@ -24,20 +21,19 @@ namespace TouchMaterial.Client
         void Start()
         {
             _net = JsonMapper.ToObject<NetworkSetting>(_netJson.text);
-            _steamVrAvatarInit.Init();
+            _vrSwitcher.Init();
 
             _poseController.Init(_net.RemoteIp, _net.RemotePosePort, _net.PoseBufferSize);
             _videoController.Init(_net.LocalIp, _net.LocalVideoPort, _net.VideoBufferSize);
-            _tactileController.Init(new TactileController.InitParams()
-            {
-                localIp = _net.LocalIp,
-                localTactilePort = _net.LocalTactilePort,
-                decodeIp = _net.RemoteIp,
-                decodeSendPort = _net.DecodeSendPort,
-                decodeReceivePort = _net.DecodeReceivePort,
-                tactileBufferSize = _net.TactileBufferSize,
-                encodedBufferSize = _net.EncodedTactileBufferSize,
-            });
+            _tactileController.Init(_net.LocalIp, _net.LocalTactilePort, _net.TactileBufferSize,
+                new DecodeHelper.InitParams()
+                {
+                    sendIp = _net.RemoteIp,
+                    sendPort = _net.DecodeSendPort,
+                    receiveIp = _net.LocalIp,
+                    receivePort = _net.DecodeReceivePort,
+                    bufferSize = _net.DecodeTactileBufferSize,
+                });
 
             _poseController.Start();
             _videoController.Start();

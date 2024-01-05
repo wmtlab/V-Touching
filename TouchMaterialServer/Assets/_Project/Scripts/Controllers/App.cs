@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Text;
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TouchMaterial.Server
 {
@@ -21,39 +16,22 @@ namespace TouchMaterial.Server
         private NetworkSetting _net;
         private bool _isSending = false;
 
-        public bool ToRecordAcc = false;
-        public string RecordName;
-        private StringBuilder _sb;
-
 
         void Start()
         {
             _net = LitJson.JsonMapper.ToObject<NetworkSetting>(_netJson.text);
             _poseController.Init(_net.LocalIp, _net.LocalPosePort, _net.PoseBufferSize);
             _videoController.Init(_net.RemoteIp, _net.RemoteVideoPort, _net.VideoBufferSize);
-            _tactileController.Init(new TactileController.InitParams()
+            _tactileController.Init(_net.RemoteIp, _net.RemoteTactilePort, new EncodeHelper.InitParams()
             {
-                remoteIp = _net.RemoteIp,
-                remoteTactilePort = _net.RemoteTactilePort,
+                sendIp = _net.LocalIp,
+                sendPort = _net.EncodeSendPort,
+                receiveIp = _net.LocalIp,
+                receivePort = _net.EncodeReceivePort,
 
-                localIp = _net.LocalIp,
-                encodeIp = _net.LocalIp,
-                encodeSendPort = _net.EncodeSendPort,
-                encodeReceivePort = _net.EncodeReceivePort,
-
-                tactileBufferSize = _net.TactileBufferSize,
-                encodedBufferSize = _net.EncodedTactileBufferSize
+                sendBufferSize = _net.TactileBufferSize,
+                receiveBufferSize = _net.EncodedTactileBufferSize
             });
-
-            if (ToRecordAcc)
-            {
-                _sb = new StringBuilder();
-                _tactileController.OnTactileFlushed += (data) =>
-                {
-                    _sb.Append(string.Join(";", data.Select(actuator => string.Join(",", actuator))));
-                    _sb.AppendLine();
-                };
-            }
 
             _poseController.Start();
         }
@@ -90,6 +68,7 @@ namespace TouchMaterial.Server
 
         private void OnTimeout()
         {
+            Debug.Log("Pose timeout");
             _videoController.Stop();
             _tactileController.Stop();
         }
@@ -98,13 +77,6 @@ namespace TouchMaterial.Server
         {
             _poseController.Stop();
             _videoController.Stop();
-            if (ToRecordAcc)
-            {
-                string record = _sb.ToString();
-                string outPath = Path.Combine(Application.dataPath, "OutData", RecordName + ".txt");
-                File.WriteAllText(outPath, record);
-                AssetDatabase.Refresh();
-            }
             _tactileController.Stop();
         }
 

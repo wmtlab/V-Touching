@@ -5,15 +5,15 @@ namespace TouchMaterial.Client
     [Serializable]
     public struct NetworkSetting
     {
-        #region Ip
-        public string RemoteIp;
+        #region Ip 
         public string LocalIp;
+        public string RemoteIp;
         #endregion
 
         #region Port
-        public int RemotePosePort;
         public int LocalVideoPort;
         public int LocalTactilePort;
+        public int RemotePosePort;
         public int DecodeSendPort;
         public int DecodeReceivePort;
         #endregion
@@ -22,7 +22,7 @@ namespace TouchMaterial.Client
         public int PoseBufferSize;
         public int VideoBufferSize;
         public int TactileBufferSize;
-        public int EncodedTactileBufferSize;
+        public int DecodeTactileBufferSize;
         #endregion
 
     }
