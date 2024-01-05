@@ -30,10 +30,6 @@ Matlab R2021a, for the tactile encoding/decoding used in this project. If you wa
 ## 4. Detailed Configuration and Customization
 Still in progress...
 
-## 5. Data Source
-In this project, we provide some [example data](TouchMaterialServer/Assets/StreamingAssets/TactileData/) for experiencing or testing of our application. Additionally, we have placed the data source and usage instructions in another repository: [Pixel2Taxel Database](https://github.com/wmtlab/Pixel2Taxel).
-
-
 ## 6. License
 This project is licensed under the GPL 3.0 License - see the LICENSE file for details.
 
