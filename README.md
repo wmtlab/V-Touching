@@ -30,7 +30,7 @@ Matlab R2021a, for the tactile encoding/decoding used in this project. If you wa
 ## 4. Detailed Configuration and Customization
 Still in progress...
 
-## 6. License
+## 5. License
 This project is licensed under the GPL 3.0 License - see the LICENSE file for details.
 
 Referenced projects:
