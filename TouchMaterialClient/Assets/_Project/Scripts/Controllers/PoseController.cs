@@ -13,7 +13,7 @@ namespace TouchMaterial.Client
 
         public void Init(string remoteIp, int remotePort, int bufferSize)
         {
-            _sender = new UdpSender(remoteIp, remotePort);
+            _sender = new UdpSender(remoteIp, remotePort, bufferSize);
             _buffer = new byte[bufferSize];
         }
 
@@ -36,7 +36,7 @@ namespace TouchMaterial.Client
             int index = 0;
             index = _buffer.WriteFloat(index, Time.fixedTime);
             index = SerializePose(_buffer, index);
-            _sender.SendData(_buffer);
+            _sender.SendData(_buffer, 0, index);
         }
 
         private int SerializePose(byte[] buffer, int start)

@@ -1,5 +1,8 @@
-﻿using System;
+﻿#define LOG_AFTER_CODEC
+
+using System;
 using System.Collections.Concurrent;
+using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -26,7 +29,7 @@ namespace TouchMaterial.Client
         private int _frameIdx;
 
 
-        public void Init(string localIp, int localPort, int bufferSize, DecodeHelper.InitParams initParams)
+        public void Init(string localIp, int localPort, int bufferSize)
         {
             _actuatorController = new TactileActuatorController();
             _queue = new ConcurrentQueue<byte[]>();
@@ -36,11 +39,9 @@ namespace TouchMaterial.Client
                     _queue.Enqueue(data);
                 });
 
-            initParams.useCompression = _useCompression;
-            initParams.actuatorCount = _actuatorController.ActuatorCount;
-            initParams.frameCount = _frameCount;
-            initParams.taxelFixedSize = _taxelFixedSize;
-            _decodeHelper = new DecodeHelper(initParams);
+            _decodeHelper = new MPEGDecodeHelper(
+                _actuatorController.ActuatorCount, _frameCount, _taxelFixedSize, _useCompression);
+            //_decodeHelper = new DecodeHelper(initParams, _useCompression);
 
             _curSignals = new float[_taxelFixedSize];
             _frameIdx = 0;
@@ -48,6 +49,15 @@ namespace TouchMaterial.Client
 
         public void Start()
         {
+#if LOG_AFTER_CODEC
+            count = 0;
+            string logRoot = Path.Combine(Application.streamingAssetsPath, "Log");
+            if (Directory.Exists(logRoot))
+            {
+                Directory.Delete(logRoot, true);
+            }
+            Directory.CreateDirectory(logRoot);
+#endif
             _decodeHelper?.Start();
             _receiver?.Start();
         }
@@ -73,9 +83,14 @@ namespace TouchMaterial.Client
             }
         }
 
+        int count = 0;
         private void OnDecodeFinished(float[][] tactileCaches)
         {
             _tactileCaches = tactileCaches;
+#if LOG_AFTER_CODEC
+            string logFile = Path.Combine(Application.streamingAssetsPath, "Log", $"log_{count++}.txt");
+            File.WriteAllText(logFile, string.Join(",", tactileCaches[0]));
+#endif
             _frameIdx = 0;
         }
 

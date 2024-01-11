@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fixedSize: 8
-  _tactileMultiplier: 0.5
+  _tactileMultiplier: 1
 --- !u!65 &290981517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fixedSize: 8
-  _tactileMultiplier: 0.5
+  _tactileMultiplier: 1
 --- !u!65 &692825857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1180,9 +1180,9 @@ MonoBehaviour:
     - {fileID: 8462162091295909904}
     - {fileID: 8461526745181053776}
     - {fileID: 8462020766155788296}
-    _frameCount: 64
+    _frameCount: 32
     _taxelFixedSize: 8
-    _useCompression: 0
+    _useCompression: 1
 --- !u!1 &2016554519
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,9 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\_Project\Scripts\Adapters\DecodeHelper.cs" />
      <Compile Include="Assets\_Project\Scripts\Adapters\IDecodeHelper.cs" />
      <Compile Include="Assets\_Project\Scripts\Adapters\ITactileAcutatorController.cs" />
+     <Compile Include="Assets\_Project\Scripts\Adapters\MPEGDecodeHelper.cs" />
      <Compile Include="Assets\_Project\Scripts\Adapters\TactileActuatorController.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\App.cs" />
      <Compile Include="Assets\_Project\Scripts\Controllers\NetworkSetting.cs" />

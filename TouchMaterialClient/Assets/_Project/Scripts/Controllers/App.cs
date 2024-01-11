@@ -25,15 +25,7 @@ namespace TouchMaterial.Client
 
             _poseController.Init(_net.RemoteIp, _net.RemotePosePort, _net.PoseBufferSize);
             _videoController.Init(_net.LocalIp, _net.LocalVideoPort, _net.VideoBufferSize);
-            _tactileController.Init(_net.LocalIp, _net.LocalTactilePort, _net.TactileBufferSize,
-                new DecodeHelper.InitParams()
-                {
-                    sendIp = _net.RemoteIp,
-                    sendPort = _net.DecodeSendPort,
-                    receiveIp = _net.LocalIp,
-                    receivePort = _net.DecodeReceivePort,
-                    bufferSize = _net.DecodeTactileBufferSize,
-                });
+            _tactileController.Init(_net.LocalIp, _net.LocalTactilePort, _net.TactileBufferSize);
 
             _poseController.Start();
             _videoController.Start();

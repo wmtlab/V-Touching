@@ -22,7 +22,7 @@ namespace TouchMaterial.Server
 
         public void Init(string remoteIp, int remotePort, int bufferSize)
         {
-            _sender = new UdpSender(remoteIp, remotePort);
+            _sender = new UdpSender(remoteIp, remotePort, bufferSize);
             _bufferSize = bufferSize;
         }
 
@@ -43,7 +43,7 @@ namespace TouchMaterial.Server
                 byte[] data = CaptureWindow();
                 if (data.Length < _bufferSize)
                 {
-                    _sender.SendData(data);
+                    _sender.SendData(data, 0, data.Length);
                 }
             }
             _frameCounter = (_frameCounter + 1) % _intervalFrames;

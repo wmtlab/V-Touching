@@ -12,13 +12,18 @@ namespace TouchMaterial.Server
         private float _tactileMultiplier = 0.5f;
         private int _layerMask;
         private float[,][] _referenceData;
-        private static readonly float[] EmptyTactile = new float[] { 0f, 0f, 0f, 0f, 0f, 0f, 0f, 0f };
+        private float[] _emptyTactile;
         private int _height;
         private int _width;
 
         void Start()
         {
             _layerMask = LayerMask.GetMask("TactileObject");
+            _emptyTactile = new float[_fixedSize];
+            for (int i = 0; i < _fixedSize; i++)
+            {
+                _emptyTactile[i] = 0f;
+            }
             if (!LoadReferenceData())
             {
                 Debug.LogError($"Failed to load tactile data: {gameObject.name}");
@@ -69,7 +74,9 @@ namespace TouchMaterial.Server
                     float[] raw = new float[length];
                     for (int k = 0; k < length; k++)
                     {
-                        raw[k] = BitConverter.ToSingle(dataBytes, (start + k) * sizeof(float));
+                        float acc = BitConverter.ToSingle(dataBytes, (start + k) * sizeof(float)) - 1f;
+                        acc = Mathf.Clamp(acc, -1f, 1f);
+                        raw[k] = acc;
                     }
                     referenceData[i, j] = RawToFixedArray(raw);
                 }
@@ -145,7 +152,7 @@ namespace TouchMaterial.Server
                 }
                 else
                 {
-                    baseValues = EmptyTactile;
+                    baseValues = _emptyTactile;
                 }
 
                 float depth = Vector3.Distance(hit.point, position);
@@ -157,7 +164,7 @@ namespace TouchMaterial.Server
                 }
                 return ret;
             }
-            return EmptyTactile;
+            return _emptyTactile;
         }
 
     }

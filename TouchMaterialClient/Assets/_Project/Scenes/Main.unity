@@ -725,9 +725,9 @@ MonoBehaviour:
     _rawImage: {fileID: 2049064061}
     _intervalFrames: 3
   _tactileController:
-    _frameCount: 64
+    _frameCount: 32
     _taxelFixedSize: 8
-    _useCompression: 0
+    _useCompression: 1
 --- !u!21 &2028515123
 Material:
   serializedVersion: 6

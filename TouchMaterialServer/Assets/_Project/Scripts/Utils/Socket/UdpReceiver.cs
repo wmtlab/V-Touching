@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace TouchMaterial
         private readonly IPEndPoint _localEndPoint;
         private readonly int _bufferSize;
         private readonly Action<byte[], int> _onReceiveData;
+        private List<byte[]> _receivedSegments = new List<byte[]>();
         private bool _isReceiving;
         public bool IsReceiving => _isReceiving;
         public UdpReceiver(string localIp, int localPort, int bufferSize, Action<byte[], int> onReceiveData)
@@ -58,7 +60,40 @@ namespace TouchMaterial
                     byte[] buffer = new byte[_bufferSize];
                     ArraySegment<byte> segment = new ArraySegment<byte>(buffer);
                     var result = await _socket.ReceiveFromAsync(segment, SocketFlags.None, endPoint);
-                    _onReceiveData?.Invoke(buffer, result.ReceivedBytes);
+                    int index = buffer.ReadInt(0, out int isLastPacket);
+                    byte[] body = new byte[result.ReceivedBytes - sizeof(int)];
+                    Array.Copy(buffer, index, body, 0, body.Length);
+                    if (isLastPacket == 0)
+                    {
+                        _receivedSegments.Add(body);
+                        continue;
+                    }
+                    else if (_receivedSegments.Count == 0)
+                    {
+                        _onReceiveData?.Invoke(body, body.Length);
+                    }
+                    else
+                    {
+                        int totalLength = 0;
+                        foreach (var seg in _receivedSegments)
+                        {
+                            totalLength += seg.Length;
+                        }
+                        totalLength += body.Length;
+                        byte[] totalData = new byte[totalLength];
+                        int offset = 0;
+                        foreach (var seg in _receivedSegments)
+                        {
+                            Array.Copy(seg, 0, totalData, offset, seg.Length);
+                            offset += seg.Length;
+                        }
+                        Array.Copy(body, 0, totalData, offset, body.Length);
+                        _receivedSegments.Clear();
+                        _onReceiveData?.Invoke(totalData, totalData.Length);
+                    }
+
+
+                    // _onReceiveData?.Invoke(buffer, result.ReceivedBytes);
                 }
                 catch (System.Exception ex)
                 {

@@ -4,10 +4,7 @@
     "LocalPosePort": 8901,
     "RemoteVideoPort": 8902,
     "RemoteTactilePort": 8903,
-    "EncodeSendPort": 5300,
-    "EncodeReceivePort": 5301,
     "PoseBufferSize": 1024,
     "VideoBufferSize": 16384,
-    "TactileBufferSize": 8192,
-    "EncodedTactileBufferSize": 8192
+    "TactileBufferSize": 32768
 }

@@ -22,16 +22,7 @@ namespace TouchMaterial.Server
             _net = LitJson.JsonMapper.ToObject<NetworkSetting>(_netJson.text);
             _poseController.Init(_net.LocalIp, _net.LocalPosePort, _net.PoseBufferSize);
             _videoController.Init(_net.RemoteIp, _net.RemoteVideoPort, _net.VideoBufferSize);
-            _tactileController.Init(_net.RemoteIp, _net.RemoteTactilePort, new EncodeHelper.InitParams()
-            {
-                sendIp = _net.LocalIp,
-                sendPort = _net.EncodeSendPort,
-                receiveIp = _net.LocalIp,
-                receivePort = _net.EncodeReceivePort,
-
-                sendBufferSize = _net.TactileBufferSize,
-                receiveBufferSize = _net.EncodedTactileBufferSize
-            });
+            _tactileController.Init(_net.RemoteIp, _net.RemoteTactilePort, _net.TactileBufferSize);
 
             _poseController.Start();
         }

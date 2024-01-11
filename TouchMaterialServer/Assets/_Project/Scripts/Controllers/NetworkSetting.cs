@@ -14,15 +14,12 @@ namespace TouchMaterial.Server
         public int LocalPosePort;
         public int RemoteVideoPort;
         public int RemoteTactilePort;
-        public int EncodeSendPort;
-        public int EncodeReceivePort;
         #endregion
 
         #region BufferSize
         public int PoseBufferSize;
         public int VideoBufferSize;
         public int TactileBufferSize;
-        public int EncodedTactileBufferSize;
         #endregion
 
     }
