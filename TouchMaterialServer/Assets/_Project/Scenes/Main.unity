@@ -1182,7 +1182,7 @@ MonoBehaviour:
     - {fileID: 8462020766155788296}
     _frameCount: 32
     _taxelFixedSize: 8
-    _useCompression: 1
+    _useCompression: 0
 --- !u!1 &2016554519
 GameObject:
   m_ObjectHideFlags: 0

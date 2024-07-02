@@ -1,4 +1,4 @@
-﻿#define LOG_AFTER_CODEC
+﻿// #define LOG_AFTER_CODEC
 
 using System;
 using System.Collections.Concurrent;

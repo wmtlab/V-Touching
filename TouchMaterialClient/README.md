@@ -6,7 +6,7 @@ Majority of the configuration and customization of the V-Touching client is done
 Double click the value of `Net Json` on `App` or open `Assets/_Project/Properties/NetworkSetting.json`, you will see the configurations of IPs, ports and buffer sizes. Modify them according to your environment. Buffer sizes are in bytes, and not suggested to be modified smaller than the default values, unless you are sure that it would be OK.
 
 ## 2. Hand Pose Synchronization
-expand `App>Pose Controller>Sync Objects` on `App`. Drag the objects to be synchronized into the list. Make sure the order is **same** as those in the server. Whether in the server or in the client, the index of a parent object **must** be smaller than that of its child object. Otherwise, the synchronization will be set with error values.
+Expand `App>Pose Controller>Sync Objects` on `App`. Drag the objects to be synchronized into the list. Make sure the order is **same** as those in the server. Whether in the server or in the client, the index of a parent object **must** be smaller than that of its child object. Otherwise, the synchronization will be set with error values.
 
 ## 3. Tactile Decoder
 1. Implement interface `IDecodeHelper`

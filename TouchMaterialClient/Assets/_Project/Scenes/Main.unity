@@ -727,7 +727,7 @@ MonoBehaviour:
   _tactileController:
     _frameCount: 32
     _taxelFixedSize: 8
-    _useCompression: 1
+    _useCompression: 0
 --- !u!21 &2028515123
 Material:
   serializedVersion: 6
